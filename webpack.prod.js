@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable prettier/prettier */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
@@ -13,9 +15,6 @@ module.exports = {
     publicPath: '/', // Adjust as needed for your deployment setup
   },
   devtool: false, // No source maps in production
-  optimization: {
-    minimizer: [new TerserPlugin()],
-  },
   module: {
     rules: [
         {
@@ -30,7 +29,11 @@ module.exports = {
         },
         {
           test: /\.(css|scss)$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
+          use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
+        },
+        {
+          test: /\.s[ac]ss$/i,
+          use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
         },
         {
           test: /\.(less)$/,
