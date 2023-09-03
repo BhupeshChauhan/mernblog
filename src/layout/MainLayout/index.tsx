@@ -3,8 +3,9 @@ import Header from './Header';
 import Sidebar, { SidebarItem } from './Sidebar';
 import Footer from './Footer';
 import { LayoutDashboard } from 'lucide-react';
+import { Outlet } from 'react-router';
 
-const MainLayout = ({ children }) => {
+const MainLayout = () => {
   return (
     <>
       <main className='flex min-h-screen'>
@@ -18,7 +19,7 @@ const MainLayout = ({ children }) => {
         </Sidebar>
         <div className='w-full'>
           <Header />
-          <div className='p-5'>{children}</div>
+          <div className='p-5'><Outlet /></div>
         </div>
       </main>
       <Footer />
