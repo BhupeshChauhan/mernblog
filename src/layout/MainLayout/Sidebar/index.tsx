@@ -8,48 +8,25 @@ export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <aside className='h-screen'>
-      <nav className='h-full flex flex-col bg-white border-r shadow-sm'>
-        <div className='shadow-sm w-full h-12 mb-5'>
+    <aside className={`h-full ${expanded ? 'w-52' : 'w-16'}`}>
+      <nav className='h-full flex flex-col bg-white border-r shadow-sm mb-5'>
+        <div className='py-2 h-full'>
+          <SidebarContext.Provider value={{ expanded }}>
+            <ul className='flex-1 px-3'>{children}</ul>
+          </SidebarContext.Provider>
+        </div>
+        <div className='shadow-xl w-full'>
           <div className='flex items-center justify-between bg-white py-2'>
-            <div className='font-bold text-base pl-5 cursor-pointer flex items-center font-[Poppins] text-gray-800'>
-              <img
-                src='https://img.logoipsum.com/243.svg'
-                className={`overflow-hidden transition-all h-8 ${expanded ? 'w-32' : 'w-0'}`}
-                alt=''
-              />
-            </div>
-            <div className={`flex items-center justify-end bg-white text-left w-full pr-4`}>
+            <div className={`flex items-center justify-center bg-white text-left w-full`}>
               <button
                 onClick={() => setExpanded((curr) => !curr)}
-                className='h-8 p-1.5 rounded-lg bg-gray-50 hover:bg-gray-100'
+                className={`h-8 p-1.5  bg-gray-50 hover:bg-gray-100 ${
+                  expanded ? 'w-full flex items-center justify-center' : 'rounded-lg'
+                }`}
               >
                 {expanded ? <ChevronFirst /> : <ChevronLast />}
               </button>
             </div>
-          </div>
-        </div>
-        <SidebarContext.Provider value={{ expanded }}>
-          <ul className='flex-1 px-3'>{children}</ul>
-        </SidebarContext.Provider>
-
-        <div className='border-t flex p-3'>
-          <img
-            src='https://ui-avatars.com/api/?background=c7d2fe&color=3730a3&bold=true'
-            alt=''
-            className='w-10 h-8 rounded-md'
-          />
-          <div
-            className={`
-              flex justify-between items-center
-              overflow-hidden transition-all ${expanded ? 'w-52 ml-3' : 'w-0'}
-          `}
-          >
-            <div className='leading-4'>
-              <h4 className='font-semibold'>John Doe</h4>
-              <span className='text-xs text-gray-600'>johndoe@gmail.com</span>
-            </div>
-            <MoreVertical size={20} />
           </div>
         </div>
       </nav>
