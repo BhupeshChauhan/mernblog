@@ -3,12 +3,13 @@ import AuthLogin from '../pages/authentication/AuthLogin';
 import AuthRegister from '../pages/authentication/AuthRegister';
 import React from 'react'
 import MinimalLayout from "../layout/MinimalLayout";
+import NotFound from '../pages/NotFound';
 
 // render - login
 
 // ==============================|| AUTH ROUTING ||============================== //
 
-const LoginRoutes = {
+const UnprotectedRoutes = {
   path: '/',
   element: <MinimalLayout />,
   children: [
@@ -20,7 +21,11 @@ const LoginRoutes = {
       path: 'register',
       element: <AuthRegister />,
     },
+    {
+      path: '*',
+      element: <NotFound />,
+    },
   ],
 };
 
-export default LoginRoutes;
+export default UnprotectedRoutes;
