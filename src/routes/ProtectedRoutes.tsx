@@ -8,7 +8,7 @@ import NotFound from '../pages/NotFound';
 
 // ==============================|| MAIN ROUTING ||============================== //
 
-const MainRoutes = {
+const ProtectedRoutes = {
   path: '/',
   element: <MainLayout />,
   children: [
@@ -27,4 +27,4 @@ const MainRoutes = {
   ],
 };
 
-export default MainRoutes;
+export default ProtectedRoutes;
