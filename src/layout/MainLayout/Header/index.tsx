@@ -1,3 +1,4 @@
+import Breadcrum from '../../../components/Navigation/Breadcrum';
 import Navbar from '../../../components/Navigation/Navbar';
 import React from 'react';
 
@@ -12,6 +13,7 @@ const Header = () => {
   return (
     <header>
       <Navbar Links={Links} />
+      <Breadcrum />
     </header>
   );
 };
