@@ -6,7 +6,9 @@ const MinimalLayout = () => {
   return (
     <>
       <Header />
-      <div className='h-full'><Outlet /></div>
+      <div className='h-screen'>
+        <Outlet />
+      </div>
     </>
   );
 };
