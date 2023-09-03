@@ -54,6 +54,18 @@ module.exports = {
           test: /\.(woff|woff2|eot|ttf|otf)$/i,
           type: 'asset/resource',
         },
+        {
+          test: /\.(svg)$/i,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: '[name].[ext]',
+                outputPath: 'assets/images', // Specify the output path for your assets
+              },
+            },
+          ],
+        },
       ],
   },
   plugins: [
