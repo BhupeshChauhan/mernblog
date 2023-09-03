@@ -5,7 +5,7 @@ import { useContext, createContext, useState } from 'react';
 const SidebarContext = createContext(null);
 
 export default function Sidebar({ children }) {
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   return (
     <aside className='h-screen'>
