@@ -17,14 +17,12 @@ const MainLayout = () => {
             active={true}
           />
         </Sidebar>
-        <div className='flex flex-col w-full'>
+        <div className='w-full'>
           <Header />
-          <div className='p-5 flex-auto'>
-            <Outlet />
-          </div>
-          <Footer />
+          <div className='p-5'><Outlet /></div>
         </div>
       </main>
+      <Footer />
     </>
   );
 };

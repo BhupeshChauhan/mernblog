@@ -16,10 +16,6 @@ module.exports = {
         primary: '#3498db',
         secondary: '#e74c3c',
         accent: '#f39c12',
-        success: '#27ae60',
-        info: '#2980b9',
-        warning: '#f1c40f',
-        danger: '#c0392b',
 
         // Dark mode color palette
         dark: {

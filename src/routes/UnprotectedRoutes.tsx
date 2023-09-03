@@ -1,8 +1,8 @@
 // project import
 import AuthLogin from '../pages/authentication/AuthLogin';
 import AuthRegister from '../pages/authentication/AuthRegister';
-import React from 'react';
-import MinimalLayout from '../layout/MinimalLayout';
+import React from 'react'
+import MinimalLayout from "../layout/MinimalLayout";
 import NotFound from '../pages/NotFound';
 
 // render - login
