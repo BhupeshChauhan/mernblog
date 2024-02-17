@@ -2,13 +2,7 @@
 /* eslint-disable prettier/prettier */
 // tailwind.config.js
 module.exports = {
-  content: [
-    './src/**/*.html',
-    './src/**/*.vue',
-    './src/**/*.jsx',
-    './src/**/*.tsx',
-    // Include templates, components, and pages used in your project
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: 'class', // Enable dark mode variants
   theme: {
     extend: {
@@ -17,7 +11,9 @@ module.exports = {
         primary: '#3498db',
         secondary: '#e74c3c',
         accent: '#f39c12',
-
+        grey: '#F3F3F3',
+        darkGrey: '#6B6B6B',
+        purple: '#8B46FF',
         // Dark mode color palette
         dark: {
           primary: '#2980b9',
@@ -33,13 +29,15 @@ module.exports = {
         // Define font families for e-commerce content
         sans: ['Arial', 'sans'],
         serif: ['Georgia', 'serif'],
+        inter: ["'Inter'", "sans-serif"],
+        gelasio: ["'Gelasio'", "serif"]
       },
       fontSize: {
         // Define custom font sizes for headings, paragraphs, etc.
-        'xs': '.75rem',
-        'sm': '.875rem',
-        'base': '1rem',
-        'lg': '1.125rem',
+        'xs': '.8rem',
+        'sm': '.8.5rem',
+        'base': '.9.5rem',
+        'lg': '1rem',
         'xl': '1.25rem',
         '2xl': '1.5rem',
         '3xl': '1.875rem',

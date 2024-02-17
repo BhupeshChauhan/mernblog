@@ -4,6 +4,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -11,12 +13,14 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[chunkhash].js', // Using [chunkhash] for unique filenames
+    publicPath: '/'
   },
   devtool: 'source-map', // Generate source maps for better debugging
   devServer: {
-    static: path.join(__dirname, 'public'),
+    static: path.join(__dirname, 'src'),
     port: 3000,
     hot: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -36,7 +40,7 @@ module.exports = {
         },
         {
           test: /\.s[ac]ss$/i,
-          use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
+          use: [ 'style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
         },
         {
           test: /\.(less)$/,
@@ -58,11 +62,13 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: './src/index.html',
     }),
     new CompressionPlugin({
       algorithm: 'gzip', // or 'brotliCompress'
-    })
+    }),
+    new MiniCssExtractPlugin(),
+    new Dotenv()
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
