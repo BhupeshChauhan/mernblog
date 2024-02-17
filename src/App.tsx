@@ -9,7 +9,6 @@ const App = () => {
   const router = createBrowserRouter([...routes]);
 
   return (
-              element={
     <GlobalContextProvider>
       <RouterProvider router={router} />
     </GlobalContextProvider>
