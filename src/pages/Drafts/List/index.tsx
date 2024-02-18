@@ -20,7 +20,6 @@ const Draft = () => {
   const [activateMoadal, setActivateMoadal] = useState(false);
   const [data, setData] = useState(false);
 
-
   const { userData } = useGlobalContext();
 
   function handleActivate() {}
@@ -29,23 +28,19 @@ const Draft = () => {
 
   const columns: GridColDef[] = [
     {
-      field: "id",
-      headerName: "ID",
+      field: 'id',
+      headerName: 'ID',
       renderCell: (params) => {
         const menuItem = [
           {
-            label: <Typography color="blue">Edit</Typography>,
+            label: <Typography color='blue'>Edit</Typography>,
             onClick: () => redirect(`/draft/edit/${params?.row?.id}`),
-            disable: !checkModulePermission(
-              userData,
-              moduleName.DRAFT,
-              moduleAction.EDIT,
-            ),
+            disable: !checkModulePermission(userData, moduleName.DRAFT, moduleAction.EDIT),
           },
           {
             label: (
-              <Typography color={params.row.inActive ? "green" : "red"}>
-                {params.row.inActive ? "Activate" : "Deactivate"}
+              <Typography color={params.row.inActive ? 'green' : 'red'}>
+                {params.row.inActive ? 'Activate' : 'Deactivate'}
               </Typography>
             ),
             onClick: () => {
@@ -74,8 +69,8 @@ const Draft = () => {
       },
     },
     {
-      field: "featuredImage",
-      headerName: "Featured Image",
+      field: 'featuredImage',
+      headerName: 'Featured Image',
       flex: 1,
       renderCell: (params) => {
         // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
@@ -83,63 +78,61 @@ const Draft = () => {
       },
     },
     {
-      field: "title",
-      headerName: "Title",
+      field: 'title',
+      headerName: 'Title',
       flex: 1,
     },
     {
-      field: "categories",
-      headerName: "Categories",
+      field: 'categories',
+      headerName: 'Categories',
       flex: 1,
     },
     {
-      field: "tags",
-      headerName: "Tags",
+      field: 'tags',
+      headerName: 'Tags',
       flex: 1,
     },
     {
-      field: "excerpt",
-      headerName: "Excerpt",
+      field: 'excerpt',
+      headerName: 'Excerpt',
       flex: 1,
     },
     {
-      field: "createdAt",
-      headerName: "Created Date",
+      field: 'createdAt',
+      headerName: 'Created Date',
       flex: 1,
       renderCell: (params: any) => {
-        return <>{format(parseISO(params?.row?.createdAt), "MMMM dd, yyyy")}</>;
+        return <>{format(parseISO(params?.row?.createdAt), 'MMMM dd, yyyy')}</>;
       },
     },
     {
-      field: "visibility",
-      headerName: "visibility",
+      field: 'visibility',
+      headerName: 'visibility',
       flex: 1,
     },
     {
-      field: "postStatus",
-      headerName: "Post Status",
+      field: 'postStatus',
+      headerName: 'Post Status',
       flex: 1,
       renderCell: (params: any) => {
         if (params?.row?.isPublish) {
-          return <Chip label="Published" color="success" variant="filled" />;
+          return <Chip label='Published' color='success' variant='filled' />;
         }
         if (params?.row?.isDraft) {
-          return <Chip label="Drafted" color="primary" variant="filled" />;
+          return <Chip label='Drafted' color='primary' variant='filled' />;
         }
         return null;
       },
     },
     {
-      field: "inActive",
-      headerName: "Status",
+      field: 'inActive',
+      headerName: 'Status',
       flex: 1,
       renderCell: (params: any) => {
         if (params?.row?.inActive) {
-          return (
-            <Chip label="Deactivated" color="warning" variant="outlined" />
-          );
+          return <Chip label='Deactivated' color='warning' variant='outlined' />;
         } else if (!params?.row?.inActive) {
-          return <Chip label="Active" color="primary" variant="outlined" />;
+          return <Chip label='Active' color='primary' variant='outlined' />;
         }
         return null;
       },
@@ -149,15 +142,15 @@ const Draft = () => {
   useEffect(() => {
     PostAPI.getAll().then((products) => {
       // response handling
-      setData(products)
-    })
-  }, [])
+      setData(products);
+    });
+  }, []);
 
   return (
     <CustomList
       isLoading={isLoading}
       pageTitle={'Draft List'}
-      addLink={"/draft/add"}
+      addLink={'/draft/add'}
       addLinkTitle={'Add Draft'}
       data={data}
       columnsDef={columns}

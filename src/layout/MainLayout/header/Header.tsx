@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import {
   Box,
   AppBar,
@@ -9,13 +9,12 @@ import {
   Badge,
   Button,
   Grid,
-} from "@mui/material";
-import PropTypes from "prop-types";
-import { MdMenuOpen } from "react-icons/md";
-
+} from '@mui/material';
+import PropTypes from 'prop-types';
+import { MdMenuOpen } from 'react-icons/md';
 
 // components
-import Profile from "./Profile";
+import Profile from './Profile';
 
 interface ItemType {
   toggleMobileSidebar: (event: React.MouseEvent<HTMLElement>) => void;
@@ -26,38 +25,38 @@ const Header = ({ toggleMobileSidebar }: ItemType) => {
   // const lgDown = useMediaQuery((theme) => theme.breakpoints.down('lg'));
 
   const AppBarStyled = styled(AppBar)(({ theme }) => ({
-    boxShadow: "none",
+    boxShadow: 'none',
     background: theme.palette.background.paper,
-    justifyContent: "center",
-    backdropFilter: "blur(4px)",
-    [theme.breakpoints.up("lg")]: {
-      minHeight: "72px",
+    justifyContent: 'center',
+    backdropFilter: 'blur(4px)',
+    [theme.breakpoints.up('lg')]: {
+      minHeight: '72px',
     },
     padding: 0,
-    width: "cal(100vw - 270px)",
+    width: 'cal(100vw - 270px)',
   }));
   const ToolbarStyled = styled(Toolbar)(({ theme }) => ({
-    width: "100%",
+    width: '100%',
     color: theme.palette.text.secondary,
   }));
 
   return (
-    <AppBarStyled position="sticky" color="default">
-      <ToolbarStyled className="p-0" sx={{ width: "calc(100vw-270px)" }}>
+    <AppBarStyled position='sticky' color='default'>
+      <ToolbarStyled className='p-0' sx={{ width: 'calc(100vw-270px)' }}>
         <Grid container>
           <Grid item xs={1}>
             <IconButton
-              color="inherit"
-              aria-label="menu"
+              color='inherit'
+              aria-label='menu'
               onClick={toggleMobileSidebar}
               sx={{
                 display: {
-                  lg: "none",
-                  xs: "inline",
+                  lg: 'none',
+                  xs: 'inline',
                 },
               }}
             >
-              <MdMenuOpen width="100" height="100" />
+              <MdMenuOpen width='100' height='100' />
             </IconButton>
           </Grid>
           <Grid item xs={10} />
@@ -73,7 +72,7 @@ const Header = ({ toggleMobileSidebar }: ItemType) => {
             <IconBellRinging size="21" stroke="1.5" />
           </Badge>
         </IconButton> */}
-            <Stack spacing={1} direction="row" alignItems="center">
+            <Stack spacing={1} direction='row' alignItems='center'>
               <Profile />
             </Stack>
           </Grid>

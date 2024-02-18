@@ -21,7 +21,10 @@ export function CreateEditorContextProvider({ children }: any) {
   return (
     <CreateEditorContext.Provider
       value={{
-        blog, setBlog, textEditor, setTextEditor
+        blog,
+        setBlog,
+        textEditor,
+        setTextEditor,
       }}
     >
       {children}

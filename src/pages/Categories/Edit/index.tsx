@@ -1,32 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import CustomDynamicForm from '../../../components/CustomDynamicForm';
 import CustomCircularProgress from '../../../components/CustomCircularProgress';
 import categoriesFormData from '../../../data/categoriesFormData';
+import { CategoriesApi } from '../../../apis/CategoriesApi';
 
 const CategoriesEdit = () => {
   const [isLoading, setisLoading] = useState(false);
-  const {
-    categoriesformArray,
-    categoriesInitialValues,
-    categoriesValidationSchema,
-  } = categoriesFormData();
+  const [categoryValues, setCategoryValues] = useState({});
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { categoriesformArray, categoriesInitialValues, categoriesValidationSchema } =
+    categoriesFormData();
   const onAddcategories = async (values: any) => {
-    // const res = await apiCall(values);
-    // if (res.status === 200) {
-    //   router.push("/categories/list");
-    // }
+    setisLoading(true);
+    CategoriesApi.update(values).then((categories) => {
+      // response handling
+      navigate(`/categories/list`);
+      setisLoading(false);
+    });
   };
+
+  useEffect(() => {
+    setisLoading(true);
+    CategoriesApi.get(location.pathname.split('/')[3])
+      .then((categories) => {
+        // response handling
+        setCategoryValues(categories);
+        setisLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setisLoading(false);
+      });
+  }, []);
   return (
     <div className='w-full bg-white p-6 rounded-md'>
-      {isLoading ? <CustomCircularProgress color="inherit" /> : <></>}
+      {isLoading ? <CustomCircularProgress color='inherit' /> : <></>}
       <CustomDynamicForm
-        title="Create Category"
+        title='Create Category'
         // subtitle="All listed Blogs"
         action={
-          <Link to={"/categories/list"}>
-            <Button variant="outlined">categories List</Button>
+          <Link to={'/categories/list'}>
+            <Button variant='outlined'>categories List</Button>
           </Link>
         }
         formArray={categoriesformArray}
@@ -34,6 +51,8 @@ const CategoriesEdit = () => {
         onSubmit={onAddcategories}
         validationSchema={categoriesValidationSchema}
         isClear={true}
+        isEdit={true}
+        editValues={categoryValues}
       />
     </div>
   );

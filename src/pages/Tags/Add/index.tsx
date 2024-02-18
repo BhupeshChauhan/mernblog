@@ -9,28 +9,26 @@ import { TagsApi } from '../../../apis/TagsApi';
 const TagsAdd = () => {
   const [isLoading, setisLoading] = useState(false);
   const navigate = useNavigate();
-  const { tagsFormArray, tagsInitialValues, tagsValidationSchema } =
-    tagsFormData();
+  const { tagsFormArray, tagsInitialValues, tagsValidationSchema } = tagsFormData();
 
   const onAddtags = async (values: any) => {
-    setisLoading(true)
+    setisLoading(true);
     TagsApi.create(values).then((tags) => {
       // response handling
-      navigate(`/tags/list`)
-    setisLoading(false)
-
-    })
+      navigate(`/tags/list`);
+      setisLoading(false);
+    });
   };
 
   return (
     <div className='w-full bg-white p-6 rounded-md'>
-      {isLoading ? <CustomCircularProgress color="inherit" /> : <></>}
+      {isLoading ? <CustomCircularProgress color='inherit' /> : <></>}
       <CustomDynamicForm
-        title="Tags Posts"
+        title='Tags Posts'
         // subtitle="All listed Blogs"
         action={
-          <Link to={"/tags/list"}>
-            <Button variant="outlined">Tags List</Button>
+          <Link to={'/tags/list'}>
+            <Button variant='outlined'>Tags List</Button>
           </Link>
         }
         formArray={tagsFormArray}

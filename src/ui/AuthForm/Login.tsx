@@ -29,13 +29,15 @@ const Login = ({ type }: loginType) => {
 
   const handleSubmit = async (values: any) => {
     console.log(values);
-    UsersApi.signIn(values).then((user) => {
-      // response handling
-      navigate(`/dashboard`)
-      setUserData(user)
-    }).catch((error) => {
-      console.log(error)
-    })
+    UsersApi.signIn(values)
+      .then((user) => {
+        // response handling
+        navigate(`/dashboard`);
+        setUserData(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const formik = useFormik({

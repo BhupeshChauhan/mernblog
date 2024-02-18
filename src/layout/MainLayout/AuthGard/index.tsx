@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import NotAuthorised from "../../NotAuthorised";
+import React, { useEffect, useState } from 'react';
+import NotAuthorised from '../../NotAuthorised';
 import { useGlobalContext } from '../../../context/GlobalContext';
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const AuthGard = ({ children }: any) => {
   const { userData, setUserData } = useGlobalContext();
@@ -10,10 +10,10 @@ const AuthGard = ({ children }: any) => {
   const navigate = useNavigate();
 
   function checkModulePermissions(userData: any) {
-    const path = location.pathname.split("/");
+    const path = location.pathname.split('/');
     if (path[1] && !path[2]) {
       const modulePermissions = userData.modulePermissions[path[1]];
-      if (path[1] === "dashboard") {
+      if (path[1] === 'dashboard') {
         const operationPermission = modulePermissions?.view;
         setRoutePermission(operationPermission);
       } else {
@@ -21,7 +21,7 @@ const AuthGard = ({ children }: any) => {
       }
     } else if (path[1] && path[2]) {
       const modulePermissions = userData.modulePermissions[path[1]];
-      if (path[2] === "list") {
+      if (path[2] === 'list') {
         const operationPermission = modulePermissions?.view;
         setRoutePermission(operationPermission);
       } else {
@@ -35,8 +35,8 @@ const AuthGard = ({ children }: any) => {
     if (Object.values(userData)?.length > 0) {
       checkModulePermissions(userData);
     }
-    if(Object.keys(userData).length === 0){
-      navigate('/')
+    if (Object.keys(userData).length === 0) {
+      navigate('/');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);

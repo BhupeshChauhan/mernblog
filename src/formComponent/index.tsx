@@ -50,13 +50,6 @@ const FormComponent: React.FC<IFormComponent> = ({
     formik.resetForm();
   };
 
-  const handleSaveTextEditor = (value: any, name: any) => {
-    formik.setValues({
-      ...formik.values,
-      [name]: value,
-    });
-  };
-
   const handleChangeSelect = (value: any, name: any) => {
     formik.setValues({
       ...formik.values,
@@ -76,7 +69,7 @@ const FormComponent: React.FC<IFormComponent> = ({
   return (
     <form onSubmit={formik.handleSubmit} style={{ width: '100%' }}>
       <Grid container spacing={2}>
-        {isEdit ? <Input name='id' className='hidden' /> : null}
+        {isEdit ? <Input name='id' style={{ display: 'none' }} /> : null}
         {formArray?.map((element: any, index: number) => (
           <Grid
             item

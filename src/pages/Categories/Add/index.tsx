@@ -9,26 +9,23 @@ import { CategoriesApi } from '../../../apis/CategoriesApi';
 const CategoriesAdd = () => {
   const [isLoading, setisLoading] = useState(false);
   const navigate = useNavigate();
-  const {
-    categoriesformArray,
-    categoriesInitialValues,
-    categoriesValidationSchema,
-  } = categoriesFormData();
+  const { categoriesformArray, categoriesInitialValues, categoriesValidationSchema } =
+    categoriesFormData();
   const onAddcategories = async (values: any) => {
     CategoriesApi.create(values).then((categories) => {
       // response handling
-      navigate(`/categories/list`)
-    })
+      navigate(`/categories/list`);
+    });
   };
   return (
     <div className='w-full bg-white p-6 rounded-md'>
-      {isLoading ? <CustomCircularProgress color="inherit" /> : <></>}
+      {isLoading ? <CustomCircularProgress color='inherit' /> : <></>}
       <CustomDynamicForm
-        title="Create Category"
+        title='Create Category'
         // subtitle="All listed Blogs"
         action={
-          <Link to={"/categories/list"}>
-            <Button variant="outlined">categories List</Button>
+          <Link to={'/categories/list'}>
+            <Button variant='outlined'>categories List</Button>
           </Link>
         }
         formArray={categoriesformArray}

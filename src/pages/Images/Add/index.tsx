@@ -1,5 +1,5 @@
-import React from 'react'
-import { Button } from "@mui/material";
+import React from 'react';
+import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import DashboardCard from '../../../components/shared/DashboardCard';
 import CustomUploadImage from '../../../formComponent/FormFeilds/CustomUploadImage';
@@ -7,14 +7,14 @@ import CustomUploadImage from '../../../formComponent/FormFeilds/CustomUploadIma
 const AddImages = () => {
   return (
     <DashboardCard
-      title="Upload Images"
+      title='Upload Images'
       action={
-        <Link to={"/images/list"}>
-          <Button variant="outlined">Images List</Button>
+        <Link to={'/images/list'}>
+          <Button variant='outlined'>Images List</Button>
         </Link>
       }
     >
-      <CustomUploadImage showFile={true}/>
+      <CustomUploadImage showFile={true} />
     </DashboardCard>
   );
 };

@@ -39,7 +39,7 @@ const CustomImageSelect = ({ value, handleChange, fullWidth, name, placeholder }
       console.log(images);
       setImages(data.images);
     });
-  }
+  };
 
   useEffect(() => {
     UploadImgApi.getImage().then((data) => {
@@ -90,7 +90,7 @@ const CustomImageSelect = ({ value, handleChange, fullWidth, name, placeholder }
               {placeholder}
             </Grid>
             <Grid item xs={4}>
-            <CustomUploadImage onUpload={handleUplaodCallBack} />
+              <CustomUploadImage onUpload={handleUplaodCallBack} />
             </Grid>
           </Grid>
         }

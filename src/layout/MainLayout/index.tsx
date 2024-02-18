@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { styled, Container, Box, ThemeProvider } from "@mui/material";
-import { useGlobalContext } from "../../context/GlobalContext";
-import { baselightTheme } from "../../theme/DefaultColors";
-import Sidebar from "./sidebar/Sidebar";
-import Header from "./header/Header";
-import AnimationWapper from "../../common/PageAnimation";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { styled, Container, Box, ThemeProvider } from '@mui/material';
+import { useGlobalContext } from '../../context/GlobalContext';
+import { baselightTheme } from '../../theme/DefaultColors';
+import Sidebar from './sidebar/Sidebar';
+import Header from './header/Header';
+import AnimationWapper from '../../common/PageAnimation';
+import { useLocation } from 'react-router-dom';
 
-
-const MainWrapper = styled("div")(() => ({
-  display: "flex",
-  height: "100vh",
-  width: "100%",
+const MainWrapper = styled('div')(() => ({
+  display: 'flex',
+  height: '100vh',
+  width: '100%',
 }));
 
-const PageWrapper = styled("div")(() => ({
-  display: "flex",
+const PageWrapper = styled('div')(() => ({
+  display: 'flex',
   flexGrow: 1,
-  flexDirection: "column",
-  height: "100%",
+  flexDirection: 'column',
+  height: '100%',
   zIndex: 1,
-  marginBottom: "20px",
-  backgroundColor: "transparent",
+  marginBottom: '20px',
+  backgroundColor: 'transparent',
 }));
 
 const FullLayout = ({ children }: any) => {
@@ -32,7 +31,7 @@ const FullLayout = ({ children }: any) => {
 
   return (
     <ThemeProvider theme={baselightTheme}>
-      <MainWrapper className="mainwrapper">
+      <MainWrapper className='mainwrapper'>
         <>
           {/* ------------------------------------------- */}
           {/* Sidebar */}
@@ -45,7 +44,7 @@ const FullLayout = ({ children }: any) => {
           {/* ------------------------------------------- */}
           {/* Main Wrapper */}
           {/* ------------------------------------------- */}
-          <PageWrapper className="page-wrapper">
+          <PageWrapper className='page-wrapper'>
             {/* ------------------------------------------- */}
             {/* Header */}
             {/* ------------------------------------------- */}
@@ -55,17 +54,16 @@ const FullLayout = ({ children }: any) => {
             {/* ------------------------------------------- */}
             <Container
               sx={{
-                paddingTop: "20px",
-                maxWidth: "1200px",
-                display: "flex",
+                paddingTop: '20px',
+                maxWidth: '1200px',
+                display: 'flex',
                 flexGrow: 1,
-                width: "100%",
+                width: '100%',
               }}
             >
-              
-        <AnimationWapper keyValue={location} className="w-full">
-              {children}
-        </AnimationWapper>
+              <AnimationWapper keyValue={location} className='w-full'>
+                {children}
+              </AnimationWapper>
             </Container>
           </PageWrapper>
         </>

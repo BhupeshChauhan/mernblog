@@ -16,37 +16,52 @@ import { CategoriesApi } from '../../../apis/CategoriesApi';
 const Categories = () => {
   const [isLoading, setisLoading] = useState(false);
   const [deleteMoadal, setDeleteMoadal] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState({});
   const [activateMoadal, setActivateMoadal] = useState(false);
-  const [data, setData] = useState(false);
+  const [data, setData] = useState([]);
   const navigate = useNavigate();
-
 
   const { userData } = useGlobalContext();
 
-  function handleActivate() {}
-  function handleDelete() {}
-  function getPosts() {}
+  const handleDelete = () => {
+    setisLoading(true);
+    CategoriesApi.deactivate(selectedCategory).then((categories) => {
+      // response handling
+      setData(categories);
+      setisLoading(false);
+    });
+    setDeleteMoadal(false);
+    setSelectedCategory({});
+    setisLoading(false);
+  };
+
+  const handleActivate = () => {
+    setisLoading(true);
+    CategoriesApi.activate(selectedCategory).then((categories) => {
+      // response handling
+      setData(categories);
+      setisLoading(false);
+    });
+    setActivateMoadal(false);
+    setSelectedCategory({});
+    setisLoading(false);
+  };
 
   const columns: GridColDef[] = [
     {
-      field: "id",
-      headerName: "ID",
+      field: 'id',
+      headerName: 'ID',
       renderCell: (params) => {
         const menuItem = [
           {
-            label: <Typography color="blue">Edit</Typography>,
-            onClick: () => navigate(`/categories/edit/${params?.row?.id}`),
-            disable: !checkModulePermission(
-              userData,
-              moduleName.CATEGORIES,
-              moduleAction.EDIT,
-            ),
+            label: <Typography color='blue'>Edit</Typography>,
+            onClick: () => navigate(`/categories/edit/${params?.row?._id}`),
+            disable: !checkModulePermission(userData, moduleName.CATEGORIES, moduleAction.EDIT),
           },
           {
             label: (
-              <Typography color={params.row.inActive ? "green" : "red"}>
-                {params.row.inActive ? "Activate" : "Deactivate"}
+              <Typography color={params.row.inActive ? 'green' : 'red'}>
+                {params.row.inActive ? 'Activate' : 'Deactivate'}
               </Typography>
             ),
             onClick: () => {
@@ -59,11 +74,7 @@ const Categories = () => {
               }
             },
 
-            disable: checkPermissionDelete(
-              userData,
-              params,
-              moduleName.CATEGORIES,
-            ),
+            disable: checkPermissionDelete(userData, params, moduleName.CATEGORIES),
           },
         ];
         return (
@@ -79,8 +90,8 @@ const Categories = () => {
       },
     },
     {
-      field: "featuredImage",
-      headerName: "Featured Image",
+      field: 'featuredImage',
+      headerName: 'Featured Image',
       flex: 1,
       renderCell: (params) => {
         // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
@@ -88,40 +99,38 @@ const Categories = () => {
       },
     },
     {
-      field: "name",
-      headerName: "Category Name",
+      field: 'name',
+      headerName: 'Category Name',
       flex: 1,
     },
     {
-      field: "slug",
-      headerName: "Category Slug",
+      field: 'slug',
+      headerName: 'Category Slug',
       flex: 1,
     },
     {
-      field: "description",
-      headerName: "Description",
+      field: 'description',
+      headerName: 'Description',
       flex: 1,
     },
     {
-      field: "createdAt",
-      headerName: "Created At",
+      field: 'createdAt',
+      headerName: 'Created At',
       flex: 1,
       renderCell: (params: any) => {
-        return <>{format(parseISO(params?.row?.createdAt), "MMMM dd, yyyy")}</>;
+        return <>{format(parseISO(params?.row?.createdAt), 'MMMM dd, yyyy')}</>;
       },
     },
 
     {
-      field: "inActive",
-      headerName: "Status",
+      field: 'inActive',
+      headerName: 'Status',
       flex: 1,
       renderCell: (params: any) => {
         if (params?.row?.inActive) {
-          return (
-            <Chip label="Deactivated" color="warning" variant="outlined" />
-          );
+          return <Chip label='Deactivated' color='warning' variant='outlined' />;
         } else if (!params?.row?.inActive) {
-          return <Chip label="Active" color="primary" variant="outlined" />;
+          return <Chip label='Active' color='primary' variant='outlined' />;
         }
         return null;
       },
@@ -129,13 +138,13 @@ const Categories = () => {
   ];
 
   useEffect(() => {
-    setisLoading(true)
+    setisLoading(true);
     CategoriesApi.getAll().then((categories) => {
       // response handling
-      setData(categories)
-      setisLoading(false)
-    })
-  }, [])
+      setData(categories);
+      setisLoading(false);
+    });
+  }, []);
 
   return (
     <CustomList

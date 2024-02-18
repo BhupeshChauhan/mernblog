@@ -9,11 +9,11 @@ const UserAuth = ({ type }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(Object.keys(userData).length > 0){
-      navigate('/dashboard')
+    if (Object.keys(userData).length > 0) {
+      navigate('/dashboard');
     }
-  }, [])
-  
+  }, []);
+
   return (
     <AnimationWapper keyValue={type}>
       <section className='h-cover flex items-center justify-center'>

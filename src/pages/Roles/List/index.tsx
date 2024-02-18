@@ -1,11 +1,15 @@
-import React from 'react'
-import { Button, Chip, Grid, Typography } from "@mui/material";
-import { GridColDef } from "@mui/x-data-grid";
-import { useEffect, useState } from "react";
-import { parseISO, format } from "date-fns";
+import React from 'react';
+import { Button, Chip, Grid, Typography } from '@mui/material';
+import { GridColDef } from '@mui/x-data-grid';
+import { useEffect, useState } from 'react';
+import { parseISO, format } from 'date-fns';
 import { useGlobalContext } from '../../../context/GlobalContext';
-import checkModulePermission, { checkPermissionDelete, moduleAction, moduleName } from '../../../utils/checkModulePermission';
-import { Link, redirect } from 'react-router-dom';
+import checkModulePermission, {
+  checkPermissionDelete,
+  moduleAction,
+  moduleName,
+} from '../../../utils/checkModulePermission';
+import { Link, useNavigate } from 'react-router-dom';
 import CustomMenu from '../../../components/CustomMenu';
 import CustomCircularProgress from '../../../components/CustomCircularProgress';
 import CustomDataGrid from '../../../components/CustomDataGrid';
@@ -19,26 +23,23 @@ const UsersList = () => {
   const [roles, setRoles] = useState([]);
   const [SelectedRole, setSelectedRole] = useState<any>({});
   const { userData } = useGlobalContext();
+  const navigate = useNavigate();
 
   const columns: GridColDef[] = [
     {
-      field: "id",
-      headerName: "ID",
+      field: 'id',
+      headerName: 'ID',
       renderCell: (params) => {
         const menuItem = [
           {
-            label: <Typography color="blue">Edit</Typography>,
-            onClick: () => redirect(`/roles/edit/${params?.row?.id}`),
-            disable: !checkModulePermission(
-              userData,
-              moduleName.ROLES,
-              moduleAction.EDIT,
-            ),
+            label: <Typography color='blue'>Edit</Typography>,
+            onClick: () => navigate(`/roles/edit/${params?.row?._id}`),
+            disable: !checkModulePermission(userData, moduleName.ROLES, moduleAction.EDIT),
           },
           {
             label: (
-              <Typography color={params.row.inActive ? "green" : "red"}>
-                {params.row.inActive ? "Activate" : "Deactivate"}
+              <Typography color={params.row.inActive ? 'green' : 'red'}>
+                {params.row.inActive ? 'Activate' : 'Deactivate'}
               </Typography>
             ),
             onClick: () => {
@@ -67,87 +68,93 @@ const UsersList = () => {
       },
     },
     {
-      field: "name",
-      headerName: "Roles Name",
+      field: 'name',
+      headerName: 'Roles Name',
       flex: 1,
     },
     {
-      field: "description",
-      headerName: "Roles Description",
+      field: 'description',
+      headerName: 'Roles Description',
       flex: 1,
     },
     {
-      field: "createdAt",
-      headerName: "Created At",
+      field: 'createdAt',
+      headerName: 'Created At',
       flex: 1,
       renderCell: (params: any) => {
-        return <>{format(parseISO(params?.row?.createdAt), "MMMM dd, yyyy")}</>;
+        return <>{format(parseISO(params?.row?.createdAt), 'MMMM dd, yyyy')}</>;
       },
     },
     {
-      field: "inActive",
-      headerName: "Status",
+      field: 'inActive',
+      headerName: 'Status',
       flex: 1,
       renderCell: (params: any) => {
         if (params?.row?.inActive) {
-          return (
-            <Chip label="Deactivated" color="warning" variant="outlined" />
-          );
+          return <Chip label='Deactivated' color='warning' variant='outlined' />;
         } else if (!params?.row?.inActive) {
-          return <Chip label="Active" color="primary" variant="outlined" />;
+          return <Chip label='Active' color='primary' variant='outlined' />;
         }
         return null;
       },
     },
   ];
 
-  const handleDelete = async () => {
+  const handleDelete = () => {
     setisLoading(true);
-    // await deleteRole(SelectedRole.id);
-    // await fetchRoles().then((res) => {
-    //   setRoles(res);
-    // });
+    RolesApi.deactivate({id: SelectedRole.id}).then((users) => {
+      // response handling
+      setRoles(users);
+      setisLoading(false);
+    });
     setDeleteMoadal(false);
     setSelectedRole({});
     setisLoading(false);
   };
 
-  const handleActivate = async () => {
+  const handleActivate = () => {
     setisLoading(true);
-    // await activateRole(SelectedRole.id);
-    // await fetchRoles().then((res) => {
-    //   setRoles(res);
-    // });
+    RolesApi.activate({id: SelectedRole.id}).then((users) => {
+      // response handling
+      setRoles(users);
+      setisLoading(false);
+    });
     setActivateMoadal(false);
     setSelectedRole({});
     setisLoading(false);
   };
+
   useEffect(() => {
     setisLoading(true);
-    RolesApi.getAll().then((categories) => {
-      // response handling
-      setRoles(categories)
-      setisLoading(false)
-    })
+    RolesApi.getAll()
+      .then((products) => {
+        // response handling
+        setRoles(products);
+        setisLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setisLoading(false);
+      });
   }, []);
 
   return (
     <>
-      {isLoading ? <CustomCircularProgress color="inherit" /> : <></>}
+      {isLoading ? <CustomCircularProgress color='inherit' /> : <></>}
       <CustomDataGrid
-        title="Roles List"
+        title='Roles List'
         // subtitle="All listed Blogs"
         action={
-          <Link to={"/roles/add"}>
+          <Link to={'/roles/add'}>
             <Button
-              variant="outlined"
-              // disabled={
-              //   !checkModulePermission(
-              //     userData,
-              //     moduleName.ROLES,
-              //     moduleAction.ADD,
-              //   )
-              // }
+              variant='outlined'
+              disabled={
+                !checkModulePermission(
+                  userData,
+                  moduleName.ROLES,
+                  moduleAction.ADD,
+                )
+              }
             >
               Create Role
             </Button>
@@ -164,7 +171,7 @@ const UsersList = () => {
         open={DeleteMoadal}
         title={`Do you want to Deactivate ${SelectedRole?.name} Role`}
         content={
-          "Note: If you Deactivate this role all the users associated with this role will also be deactivated."
+          'Note: If you Deactivate this role all the users associated with this role will also be deactivated.'
         }
         handleClose={() => {
           setDeleteMoadal(false);
@@ -180,7 +187,7 @@ const UsersList = () => {
         open={ActivateMoadal}
         title={`Do you want to activate ${SelectedRole?.name} Role`}
         content={
-          "Note: If you activate this role all the users associated with this role will also be activated."
+          'Note: If you activate this role all the users associated with this role will also be activated.'
         }
         handleClose={() => {
           setActivateMoadal(false);

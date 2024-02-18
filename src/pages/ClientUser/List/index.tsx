@@ -1,6 +1,6 @@
-import React from 'react'
-import { GridColDef } from "@mui/x-data-grid";
-import { useState } from "react";
+import React from 'react';
+import { GridColDef } from '@mui/x-data-grid';
+import { useState } from 'react';
 import CustomDataGrid from '../../../components/CustomDataGrid';
 
 const ClientUser = () => {
@@ -8,28 +8,28 @@ const ClientUser = () => {
 
   const columns: GridColDef[] = [
     {
-      field: "id",
-      headerName: "ID",
+      field: 'id',
+      headerName: 'ID',
     },
     {
-      field: "name",
+      field: 'name',
       headerName: "User's Name",
       flex: 1,
     },
     {
-      field: "email",
+      field: 'email',
       headerName: "User's Email",
       flex: 1,
     },
     {
-      field: "role",
+      field: 'role',
       headerName: "User's Role",
       flex: 1,
       renderCell: (params) => <>User</>,
     },
     {
-      field: "createdAt",
-      headerName: "Created At",
+      field: 'createdAt',
+      headerName: 'Created At',
       flex: 1,
     },
   ];
@@ -37,7 +37,7 @@ const ClientUser = () => {
     <>
       {/* {isLoading ? <CustomCircularProgress color="inherit" /> : <></>} */}
       <CustomDataGrid
-        title="Users List"
+        title='Users List'
         // subtitle="All listed Blogs"
         columns={columns}
         rows={Users}

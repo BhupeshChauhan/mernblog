@@ -1,7 +1,6 @@
-
 // import { styled } from "@mui/material";
-import React from 'react'
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 const logo = require('../../../../assets/imgs/dfaxlogo.png');
 
 // const LinkStyled = styled(Link)(() => ({
@@ -13,11 +12,8 @@ const logo = require('../../../../assets/imgs/dfaxlogo.png');
 
 const Logo = () => {
   return (
-    <Link to="/" className="flex justify-center items-center w-28 my-4">
-      <img
-        src={logo}
-        alt="logo"
-      />
+    <Link to='/' className='flex justify-center items-center w-28 my-4'>
+      <img src={logo} alt='logo' />
     </Link>
   );
 };

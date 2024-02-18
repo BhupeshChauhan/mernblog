@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 import {
   Avatar,
@@ -9,10 +9,10 @@ import {
   MenuItem,
   ListItemIcon,
   ListItemText,
-} from "@mui/material";
+} from '@mui/material';
 
-import { MdOutlineContactMail, MdFace6 } from "react-icons/md";
-import { useGlobalContext } from "../../../context/GlobalContext";
+import { MdOutlineContactMail, MdFace6 } from 'react-icons/md';
+import { useGlobalContext } from '../../../context/GlobalContext';
 
 const usericon = require('../../../assets/imgs/usericon.png');
 
@@ -26,25 +26,24 @@ const Profile = () => {
     setAnchorEl2(null);
   };
 
-
   return (
     <Box>
       <IconButton
-        size="large"
-        aria-label="show 11 new notifications"
-        color="inherit"
-        aria-controls="msgs-menu"
-        aria-haspopup="true"
+        size='large'
+        aria-label='show 11 new notifications'
+        color='inherit'
+        aria-controls='msgs-menu'
+        aria-haspopup='true'
         sx={{
-          ...(typeof anchorEl2 === "object" && {
-            color: "primary.main",
+          ...(typeof anchorEl2 === 'object' && {
+            color: 'primary.main',
           }),
         }}
         onClick={handleClick2}
       >
         <Avatar
           src={usericon}
-          alt="image"
+          alt='image'
           sx={{
             width: 35,
             height: 35,
@@ -55,16 +54,16 @@ const Profile = () => {
       {/* Message Dropdown */}
       {/* ------------------------------------------- */}
       <Menu
-        id="msgs-menu"
+        id='msgs-menu'
         anchorEl={anchorEl2}
         keepMounted
         open={Boolean(anchorEl2)}
         onClose={handleClose2}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         sx={{
-          "& .MuiMenu-paper": {
-            width: "200px",
+          '& .MuiMenu-paper': {
+            width: '200px',
           },
         }}
       >
@@ -81,7 +80,13 @@ const Profile = () => {
           <ListItemText>My Account</ListItemText>
         </MenuItem>
         <Box mt={1} py={1} px={2}>
-          <Button variant="outlined" color="primary" onClick={() => {setUserData({})}}>
+          <Button
+            variant='outlined'
+            color='primary'
+            onClick={() => {
+              setUserData({});
+            }}
+          >
             Logout
           </Button>
         </Box>

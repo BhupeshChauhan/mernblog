@@ -40,7 +40,7 @@ const routes: RouteConfig[] = [
   {
     // parent route component
     element: (
-      <Suspense fallback={<CustomCircularProgress color="inherit" />}>
+      <Suspense fallback={<CustomCircularProgress color='inherit' />}>
         <Layout type='mini' />
       </Suspense>
     ),
@@ -51,7 +51,7 @@ const routes: RouteConfig[] = [
   {
     // parent route component
     element: (
-      <Suspense fallback={<CustomCircularProgress color="inherit" />}>
+      <Suspense fallback={<CustomCircularProgress color='inherit' />}>
         <Layout type='main' />
       </Suspense>
     ),
@@ -85,7 +85,7 @@ const routes: RouteConfig[] = [
   {
     path: '/404',
     element: (
-      <Suspense fallback={<CustomCircularProgress color="inherit" />}>
+      <Suspense fallback={<CustomCircularProgress color='inherit' />}>
         <NotFound />
       </Suspense>
     ),

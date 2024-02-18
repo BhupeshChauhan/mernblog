@@ -11,39 +11,40 @@ const UsersAdd = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const [RolesList, setRolesList] = useState([]);
-  const { usersformArray, userInitialValues, userValidationSchema } =
-    usersFormData(RolesList);
+  const { usersformArray, userInitialValues, userValidationSchema } = usersFormData(RolesList);
 
   const onAddUser = async (values: any) => {
-    setIsLoading(true)
-    await UsersApi.create(values).then((tags) => {
-      // response handling
-      navigate(`/users/list`)
-      setIsLoading(false)
-    }).catch(((err) => {
-      console.error(err)
-      setIsLoading(false)
-    }))
+    setIsLoading(true);
+    await UsersApi.create(values)
+      .then((tags) => {
+        // response handling
+        navigate(`/users/list`);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsLoading(false);
+      });
   };
 
   useEffect(() => {
     setIsLoading(true);
     RolesApi.getAll().then((categories) => {
       // response handling
-      setRolesList(categories)
-      setIsLoading(false)
-    })
+      setRolesList(categories);
+      setIsLoading(false);
+    });
   }, []);
 
   return (
     <div className='w-full bg-white p-6 rounded-md'>
-      {isLoading ? <CustomCircularProgress color="inherit" /> : <></>}
+      {isLoading ? <CustomCircularProgress color='inherit' /> : <></>}
       <CustomDynamicForm
-        title="Create User"
+        title='Create User'
         // subtitle="All listed Blogs"
         action={
-          <Link to={"/users/list"}>
-            <Button variant="outlined">Users List</Button>
+          <Link to={'/users/list'}>
+            <Button variant='outlined'>Users List</Button>
           </Link>
         }
         formArray={usersformArray}

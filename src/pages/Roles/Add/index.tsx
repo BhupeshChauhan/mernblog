@@ -9,31 +9,31 @@ import { RolesApi } from '../../../apis/RolesApi';
 const RolesAdd = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { rolesFormArray, rolesInitialValues, rolesValidationSchema } =
-    rolesFormData();
+  const { rolesFormArray, rolesInitialValues, rolesValidationSchema } = rolesFormData();
 
   const onAddRole = async (values: any) => {
-    setIsLoading(true)
-    RolesApi.create(values).then(() => {
-      // response handling
-      navigate(`/roles/list`)
-      setIsLoading(false)
-    }).catch((err) => {
-      console.log("Failed to create", err)
-      setIsLoading(false)
-    })
+    setIsLoading(true);
+    RolesApi.create(values)
+      .then(() => {
+        // response handling
+        navigate(`/roles/list`);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log('Failed to create', err);
+        setIsLoading(false);
+      });
   };
-
 
   return (
     <div className='w-full bg-white p-6 rounded-md'>
-      {isLoading ? <CustomCircularProgress color="inherit" /> : <></>}
+      {isLoading ? <CustomCircularProgress color='inherit' /> : <></>}
       <CustomDynamicForm
-        title="Create Roles"
+        title='Create Roles'
         // subtitle="All listed Blogs"
         action={
-          <Link to={"/roles/list"}>
-            <Button variant="outlined">Roles List</Button>
+          <Link to={'/roles/list'}>
+            <Button variant='outlined'>Roles List</Button>
           </Link>
         }
         formArray={rolesFormArray}

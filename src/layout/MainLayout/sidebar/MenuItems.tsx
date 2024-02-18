@@ -1,34 +1,32 @@
-
-
-import { uniqueId } from "lodash";
-import { useGlobalContext } from "../../../context/GlobalContext";
-import { MdDashboard, MdOutlineAdminPanelSettings, MdFace6 } from "react-icons/md";
-import { BiSolidBookContent, BiBookContent } from "react-icons/bi";
-import { BsListColumns } from "react-icons/bs";
-import { RiListCheck3 } from "react-icons/ri";
-import { CiImageOn } from "react-icons/ci";
-import { CgListTree } from "react-icons/cg";
+import { uniqueId } from 'lodash';
+import { useGlobalContext } from '../../../context/GlobalContext';
+import { MdDashboard, MdOutlineAdminPanelSettings, MdFace6 } from 'react-icons/md';
+import { BiSolidBookContent, BiBookContent } from 'react-icons/bi';
+import { BsListColumns } from 'react-icons/bs';
+import { RiListCheck3 } from 'react-icons/ri';
+import { CiImageOn } from 'react-icons/ci';
+import { CgListTree } from 'react-icons/cg';
 
 const MenuItems = () => {
   const { userData } = useGlobalContext();
   const items = [
     {
       navlabel: true,
-      subheader: "Home",
+      subheader: 'Home',
       visibility: userData?.modulePermissions?.dashboard?.view,
     },
 
     {
       id: uniqueId(),
-      title: "Dashboard",
+      title: 'Dashboard',
       icon: MdDashboard,
-      href: "/dashboard",
-      path: "dashboard",
+      href: '/dashboard',
+      path: 'dashboard',
       visibility: userData?.modulePermissions?.dashboard?.view,
     },
     {
       navlabel: true,
-      subheader: "Blog",
+      subheader: 'Blog',
       visibility:
         userData?.modulePermissions?.draft?.view ||
         userData?.modulePermissions?.posts?.view ||
@@ -37,78 +35,77 @@ const MenuItems = () => {
     },
     {
       id: uniqueId(),
-      title: "Posts",
+      title: 'Posts',
       icon: BiSolidBookContent,
-      href: "/posts/list",
-      path: "posts",
+      href: '/posts/list',
+      path: 'posts',
       visibility: userData?.modulePermissions?.posts?.view,
     },
     {
       id: uniqueId(),
-      title: "Draft",
+      title: 'Draft',
       icon: BiBookContent,
-      href: "/draft/list",
-      path: "draft",
+      href: '/draft/list',
+      path: 'draft',
       visibility: userData?.modulePermissions?.draft?.view,
     },
     {
       id: uniqueId(),
-      title: "Categories",
+      title: 'Categories',
       icon: BsListColumns,
-      href: "/categories/list",
-      path: "categories",
+      href: '/categories/list',
+      path: 'categories',
       visibility: userData?.modulePermissions?.categories?.view,
     },
     {
       id: uniqueId(),
-      title: "Tags",
+      title: 'Tags',
       icon: RiListCheck3,
-      href: "/tags/list",
-      path: "tags",
+      href: '/tags/list',
+      path: 'tags',
       visibility: userData?.modulePermissions?.tags?.view,
     },
     {
       navlabel: true,
-      subheader: "Galery",
+      subheader: 'Galery',
       visibility: userData?.modulePermissions?.images?.view,
     },
     {
       id: uniqueId(),
-      title: "Images",
+      title: 'Images',
       icon: CiImageOn,
-      href: "/images/list",
-      path: "images",
+      href: '/images/list',
+      path: 'images',
       visibility: userData?.modulePermissions?.images?.view,
     },
     {
       navlabel: true,
-      subheader: "Auth",
+      subheader: 'Auth',
       visibility:
-        userData?.modulePermissions?.users?.view ||
-        userData?.modulePermissions?.roles?.view,
+        userData?.modulePermissions?.users?.view || userData?.modulePermissions?.roles?.view,
     },
     {
       id: uniqueId(),
-      title: "Admin Users",
+      title: 'Admin Users',
       icon: MdOutlineAdminPanelSettings,
-      href: "/users/list",
-      path: "users",
+      href: '/users/list',
+      path: 'users',
       visibility: userData?.modulePermissions?.users?.view,
     },
     {
       id: uniqueId(),
-      title: "Client Users",
+      title: 'Client Users',
       icon: MdFace6,
-      href: "/clientUser/list",
-      path: "clientUser",
+      href: '/clientUser/list',
+      path: 'clientUser',
       visibility: userData?.modulePermissions?.users?.view,
     },
     {
       id: uniqueId(),
-      title: "Roles",
+      title: 'Roles',
       icon: CgListTree,
-      href: "/roles/list",
-      path: "roles",
+      href: '/roles/list',
+      path: 'roles',
       visibility: userData?.modulePermissions?.roles?.view,
     },
   ];

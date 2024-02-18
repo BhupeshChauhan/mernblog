@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { FormControl, FormHelperText, MenuItem, OutlinedInput, Select } from '@mui/material';
 
 type Props = {

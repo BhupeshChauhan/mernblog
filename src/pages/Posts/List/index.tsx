@@ -20,7 +20,6 @@ const Posts = () => {
   const [activateMoadal, setActivateMoadal] = useState(false);
   const [data, setData] = useState(false);
 
-
   const { userData } = useGlobalContext();
 
   function handleActivate() {}
@@ -143,9 +142,9 @@ const Posts = () => {
   useEffect(() => {
     PostAPI.getAll().then((products) => {
       // response handling
-      setData(products)
-    })
-  }, [])
+      setData(products);
+    });
+  }, []);
 
   return (
     <CustomList

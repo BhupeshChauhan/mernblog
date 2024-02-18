@@ -1,38 +1,77 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CustomDynamicForm from '../../../components/CustomDynamicForm';
 import CustomCircularProgress from '../../../components/CustomCircularProgress';
 import usersFormData from '../../../data/usersFormData';
+import { UsersApi } from '../../../apis/UsersApi';
+import { RolesApi } from '../../../apis/RolesApi';
 
 const UsersEdit = () => {
-  const [isLoading, setIsLoading] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [RolesList, setRolesList] = useState([]);
-  const { usersformArray, userInitialValues, userValidationSchema } =
+  const navigate = useNavigate();
+  const { usersformArrayEdit, userInitialValuesEdit, userValidationSchemaEdit } =
     usersFormData(RolesList);
 
-  const onAddUser = async (values: any) => {
-    // const res: any = await apiCall(values);
-    // if (res.status === 200) router.push("/users/list");
+  const [userValues, setUserValues] = useState({});
+
+  const onEditUser = async (values: any) => {
+    setIsLoading(true);
+    UsersApi.update(values)
+      .then(() => {
+        // response handling
+        navigate(`/users/list`);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsLoading(false);
+      });
   };
 
-  const [userValues, setUserValues] = useState({});
+  console.log(userValues)
+
+  const getInitData = async () => {
+    setIsLoading(true);
+    await RolesApi.getAll().then((user) => {
+      // response handling
+      setRolesList(user);
+      setIsLoading(false);
+    });
+
+    await UsersApi.get(location.pathname.split('/')[3])
+      .then((user) => {
+        // response handling
+        setUserValues(user);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    getInitData();
+  }, []);
+
   return (
     <div className='w-full bg-white p-6 rounded-md'>
-      {isLoading ? <CustomCircularProgress color="inherit" /> : <></>}
+      {isLoading ? <CustomCircularProgress color='inherit' /> : <></>}
       <CustomDynamicForm
-        title="Create User"
+        title='Create User'
         // subtitle="All listed Blogs"
         action={
-          <Link to={"/users/list"}>
-            <Button variant="outlined">Users List</Button>
+          <Link to={'/users/list'}>
+            <Button variant='outlined'>Users List</Button>
           </Link>
         }
-        formArray={usersformArray}
-        initialValues={userInitialValues}
-        onSubmit={onAddUser}
+        formArray={usersformArrayEdit}
+        initialValues={userInitialValuesEdit}
+        onSubmit={onEditUser}
         isClear={true}
-        validationSchema={userValidationSchema}
+        validationSchema={userValidationSchemaEdit}
         isEdit={true}
         editValues={userValues}
       />

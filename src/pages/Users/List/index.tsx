@@ -1,16 +1,18 @@
-import React from 'react'
-import { Button, Chip, Grid, Typography } from "@mui/material";
-import { GridColDef } from "@mui/x-data-grid";
-import { useEffect, useState } from "react";
-import { parseISO, format } from "date-fns";
+import React from 'react';
+import { Chip, Grid, Typography } from '@mui/material';
+import { GridColDef } from '@mui/x-data-grid';
+import { useEffect, useState } from 'react';
+import { parseISO, format } from 'date-fns';
 import { useGlobalContext } from '../../../context/GlobalContext';
-import checkModulePermission, { checkPermissionDelete, moduleAction, moduleName } from '../../../utils/checkModulePermission';
-import { Link, redirect } from 'react-router-dom';
+import checkModulePermission, {
+  checkPermissionDelete,
+  moduleAction,
+  moduleName,
+} from '../../../utils/checkModulePermission';
+import { useNavigate } from 'react-router-dom';
 import CustomMenu from '../../../components/CustomMenu';
-import CustomCircularProgress from '../../../components/CustomCircularProgress';
-import CustomDataGrid from '../../../components/CustomDataGrid';
-import CustomModal from '../../../components/CustomModal';
 import { UsersApi } from '../../../apis/UsersApi';
+import CustomList from '../../../components/CustomPageLayout/CustomList';
 
 const UsersList = () => {
   const [isLoading, setisLoading] = useState(false);
@@ -18,34 +20,31 @@ const UsersList = () => {
   const [ActivateMoadal, setActivateMoadal] = useState(false);
   const [SelectedUser, setSelectedUser] = useState<any>({});
   const [Users, setUsers] = useState([]);
+  const navigate = useNavigate();
   const { userData } = useGlobalContext();
 
   const columns: GridColDef[] = [
     {
-      field: "id",
-      headerName: "ID",
+      field: 'id',
+      headerName: 'ID',
       renderCell: (params) => {
         const menuItem = [
           {
-            label: <Typography color="blue">Edit</Typography>,
-            onClick: () => redirect(`/users/edit/${params?.row?.id}`),
-            disable: !checkModulePermission(
-              userData,
-              moduleName.USERS,
-              moduleAction.EDIT,
-            ),
+            label: <Typography color='blue'>Edit</Typography>,
+            onClick: () => navigate(`/users/edit/${params?.row?._id}`),
+            disable: !checkModulePermission(userData, moduleName.USERS, moduleAction.EDIT),
           },
           {
             label: (
-              <Typography color={params.row.inActive ? "green" : "red"}>
-                {params.row.inActive ? "Activate" : "Deactivate"}
+              <Typography color={params.row.personal_info.inActive ? 'green' : 'red'}>
+                {params.row.personal_info.inActive ? 'Activate' : 'Deactivate'}
               </Typography>
             ),
             onClick: () => {
-              if (params.row.inActive) {
+              if (params.row.personal_info.inActive) {
                 setActivateMoadal(true);
                 setSelectedUser(params.row);
-              } else if (!params.row.inActive) {
+              } else if (!params.row.personal_info.inActive) {
                 setDeleteMoadal(true);
                 setSelectedUser(params.row);
               }
@@ -66,8 +65,8 @@ const UsersList = () => {
       },
     },
     {
-      field: "profilePicture",
-      headerName: "Profile Picture",
+      field: 'profilePicture',
+      headerName: 'Profile Picture',
       flex: 1,
       renderCell: (params) => {
         // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
@@ -75,7 +74,7 @@ const UsersList = () => {
       },
     },
     {
-      field: "bio",
+      field: 'bio',
       headerName: "User's Bio",
       flex: 1,
       renderCell: (params) => {
@@ -84,7 +83,7 @@ const UsersList = () => {
       },
     },
     {
-      field: "name",
+      field: 'name',
       headerName: "User's Name",
       flex: 1,
       renderCell: (params) => {
@@ -93,7 +92,7 @@ const UsersList = () => {
       },
     },
     {
-      field: "email",
+      field: 'email',
       headerName: "User's Email",
       flex: 1,
       renderCell: (params) => {
@@ -102,128 +101,88 @@ const UsersList = () => {
       },
     },
     {
-      field: "role",
+      field: 'role',
       headerName: "User's Role",
       flex: 1,
     },
     {
-      field: "joinedAt",
-      headerName: "Created At",
+      field: 'joinedAt',
+      headerName: 'Created At',
       flex: 1,
       renderCell: (params: any) => {
-        return <>{format(parseISO(params?.row?.joinedAt), "MMMM dd, yyyy")}</>;
+        return <>{format(parseISO(params?.row?.joinedAt), 'MMMM dd, yyyy')}</>;
       },
     },
     {
-      field: "inActive",
-      headerName: "Status",
+      field: 'inActive',
+      headerName: 'Status',
       flex: 1,
       renderCell: (params: any) => {
-        if (params?.row?.inActive) {
-          return (
-            <Chip label="Deactivated" color="warning" variant="outlined" />
-          );
-        } else if (!params?.row?.inActive) {
-          return <Chip label="Active" color="primary" variant="outlined" />;
+        if (params?.row?.personal_info?.inActive) {
+          return <Chip label='Deactivated' color='warning' variant='outlined' />;
+        } else if (!params?.row?.personal_info?.inActive) {
+          return <Chip label='Active' color='primary' variant='outlined' />;
         }
         return null;
       },
     },
   ];
 
-  const handleDelete = async () => {
+  const handleDelete = () => {
     setisLoading(true);
-    // await deleteUser(SelectedUser.id);
-    // await fetchAdminUser().then((res: any) => {
-    //   setUsers(res);
-    // });
+    UsersApi.deactivate({id: SelectedUser.id}).then((users) => {
+      // response handling
+      setUsers(users);
+      setisLoading(false);
+    });
     setDeleteMoadal(false);
     setSelectedUser({});
     setisLoading(false);
   };
 
-  const handleActivate = async () => {
+  const handleActivate = () => {
     setisLoading(true);
-    // await activateUser(SelectedUser.id);
-    // await fetchAdminUser().then((res: any) => {
-    //   setUsers(res);
-    // });
+    UsersApi.activate({id: SelectedUser.id}).then((users) => {
+      // response handling
+      setUsers(users);
+      setisLoading(false);
+    });
     setActivateMoadal(false);
     setSelectedUser({});
     setisLoading(false);
   };
 
   useEffect(() => {
-    setisLoading(true)
-    UsersApi.getAll().then((products) => {
-      // response handling
-      setUsers(products)
-      setisLoading(false)
-    })
-  }, [])
+    setisLoading(true);
+    UsersApi.getAll()
+      .then((products) => {
+        // response handling
+        setUsers(products);
+        setisLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setisLoading(false);
+      });
+  }, []);
 
   return (
-    <>
-      {isLoading ? <CustomCircularProgress color="inherit" /> : <></>}
-      <CustomDataGrid
-        title="Users List"
-        // subtitle="All listed Blogs"
-        action={
-          <Link to={"/users/add"}>
-            <Button
-              variant="outlined"
-              // disabled={
-              //   !checkModulePermission(
-              //     userData,
-              //     moduleName.USERS,
-              //     moduleAction.ADD,
-              //   )
-              // }
-            >
-              Create User
-            </Button>
-          </Link>
-        }
-        columns={columns}
-        rows={Users}
-        pageSize={10}
-        pageSizeOptions={[10, 25, 50, 100]}
-        disableRowSelectionOnClick={true}
-        disableColumnSelector={true}
-      />
-      <CustomModal
-        open={DeleteMoadal}
-        title={`Do you want to Deactivate ${SelectedUser?.name} Role`}
-        content={
-          "Note: If you deactivate this user, User will not be able to login into the system again."
-        }
-        handleClose={() => {
-          setDeleteMoadal(false);
-          setSelectedUser({});
-        }}
-        onOk={handleDelete}
-        onCancel={() => {
-          setDeleteMoadal(false);
-          setSelectedUser({});
-        }}
-      />
-      <CustomModal
-        open={ActivateMoadal}
-        title={`Do you want to activate ${SelectedUser?.name} Role`}
-        content={
-          "Note: If you activate this user, User will be able to login into the system again."
-        }
-        handleClose={() => {
-          setActivateMoadal(false);
-          setSelectedUser({});
-        }}
-        onOk={handleActivate}
-        onCancel={() => {
-          setActivateMoadal(false);
-          setSelectedUser({});
-        }}
-      />
-    </>
+    <CustomList
+      isLoading={isLoading}
+      pageTitle={'Users List'}
+      addLink={'/users/add'}
+      addLinkTitle={'Add Users'}
+      data={Users}
+      columnsDef={columns}
+      DeleteMoadal={DeleteMoadal}
+      setDeleteMoadal={setDeleteMoadal}
+      handleDelete={handleDelete}
+      ActivateMoadal={ActivateMoadal}
+      setActivateMoadal={setActivateMoadal}
+      handleActivate={handleActivate}
+      SelectedPost={SelectedUser}
+      setSelectedPost={setSelectedUser}
+    />
   );
 };
 
