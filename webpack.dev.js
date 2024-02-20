@@ -62,7 +62,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './public/index.html',
     }),
     new CompressionPlugin({
       algorithm: 'gzip', // or 'brotliCompress'
