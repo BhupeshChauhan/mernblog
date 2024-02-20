@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import EditorJS from '@editorjs/editorjs';
-import EditorTools from '../../utils/editor.tools';
+import EditorTools from '../../../../utils/editor.tools';
 import { Typography } from '@mui/material';
-import { useEditorContext } from '../../context/CreateEditorContext';
+import { useEditorContext } from '../../../../context/CreateEditorContext';
+import AnimationWapper from '../../../../common/PageAnimation';
 
-const CustomBlogEditor = () => {
+const EditorSection = ({isEdit =false}) => {
   let {
     blog: { title, banner, content, tags, categories, des, author },
     setBlog,
@@ -37,17 +38,34 @@ const CustomBlogEditor = () => {
   };
 
   useEffect(() => {
-    setTextEditor(
-      new EditorJS({
-        holderId: 'textEditor',
-        placeholder: 'Write your storyboard!',
-        tools: EditorTools,
-      })
-    );
-  }, []);
-
+    if(isEdit){
+      if(!textEditor.isReady && content){
+        setTextEditor(
+          new EditorJS({
+            holderId: 'textEditor',
+            placeholder: 'Write your storyboard!',
+            tools: EditorTools,
+            data: Array.isArray(content) ? content[0] : content
+          })
+        );
+      }
+    } else {
+      if(!textEditor.isReady){
+      setTextEditor(
+        new EditorJS({
+          holderId: 'textEditor',
+          placeholder: 'Write your storyboard!',
+          tools: EditorTools,
+        })
+      );
+      }
+    }
+    
+    }, [content]);
+    
+    console.log(content)
   return (
-    <>
+    <AnimationWapper>
       <div className='mb-4'>
         <Typography variant='h5'>Editor</Typography>
       </div>
@@ -56,6 +74,7 @@ const CustomBlogEditor = () => {
           <textarea
             placeholder='Blog Title'
             className='text-4xl font-medium w-full h-14 outline-none resize-none leading-tight placeholder:opacity-40'
+            value={title}
             onKeyDown={handleKeyDown}
             onChange={handleTitleChange}
           />
@@ -64,6 +83,7 @@ const CustomBlogEditor = () => {
           <textarea
             placeholder='Blog Description'
             className='text-xl font-medium w-full h-10 outline-none resize-none leading-tight placeholder:opacity-40'
+            value={des}
             onKeyDown={handleKeyDown}
             onChange={handleDescriptionChange}
           />
@@ -73,8 +93,8 @@ const CustomBlogEditor = () => {
       <div className='p-6'>
         <div id='textEditor' className='font-gelasio' />
       </div>
-    </>
+    </AnimationWapper>
   );
 };
 
-export default CustomBlogEditor;
+export default EditorSection;

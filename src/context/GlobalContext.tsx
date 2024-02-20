@@ -3,7 +3,6 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 const GlobalContext = createContext<any>(null);
 
 export function GlobalContextProvider({ children }: any) {
-  const [User, setUser] = useState([]);
   const [alertMessage, setAlertMessage] = useState('');
   const [severity, setSeverity] = useState('');
   const [openCustomSnackBar, setOpenCustomSnackBar] = useState(false);
@@ -38,8 +37,6 @@ export function GlobalContextProvider({ children }: any) {
         setAnchorOrigin,
         autoHideDuration,
         setAutoHideDuration,
-        User,
-        setUser,
         userData,
         setUserData,
       }}

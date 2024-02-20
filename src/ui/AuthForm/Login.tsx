@@ -1,14 +1,9 @@
 import React from 'react';
 import {
   Box,
-  Typography,
-  FormGroup,
-  FormControlLabel,
   Stack,
-  Checkbox,
   InputAdornment,
 } from '@mui/material';
-import { FaUser, FaGoogle } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import { TbPasswordMobilePhone } from 'react-icons/tb';
 
@@ -16,7 +11,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import CustomTextField from '../../formComponent/FormFeilds/CustomTextField';
 import { useGlobalContext } from '../../context/GlobalContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { UsersApi } from '../../apis/UsersApi';
 
 interface loginType {
