@@ -9,7 +9,6 @@ import Embed from '@editorjs/embed';
 import { UploadImgApi } from '../apis/UploadImgApi';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import editorjsColumns from '@calumk/editorjs-Columns';
 import EditorJs from '@editorjs/editorjs';
 
 export const handleUploadImage = async (img) => {
@@ -140,13 +139,6 @@ const EditorTools = {
       placeholder: 'Type Heading ...',
       levels: [1, 2, 3, 4, 5, 6],
       defaultLevel: 3,
-    },
-  },
-  columns: {
-    class: editorjsColumns,
-    config: {
-      EditorJsLibrary: EditorJs, // Pass the library instance to the columns instance.
-      tools: column_tools, // IMPORTANT! ref the column_tools
     },
   },
 };

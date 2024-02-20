@@ -39,7 +39,6 @@
   },
   "homepage": "https://github.com/BhupeshChauhan/frontendtemplate#readme",
   "dependencies": {
-    "@calumk/editorjs-columns": "^0.3.1",
     "@editorjs/code": "^2.9.0",
     "@editorjs/editorjs": "^2.29.0",
     "@editorjs/embed": "^2.7.0",
