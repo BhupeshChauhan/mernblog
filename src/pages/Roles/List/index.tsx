@@ -102,7 +102,7 @@ const UsersList = () => {
 
   const handleDelete = () => {
     setisLoading(true);
-    RolesApi.deactivate({id: SelectedRole.id}).then((users) => {
+    RolesApi.deactivate({ id: SelectedRole.id }).then((users) => {
       // response handling
       setRoles(users);
       setisLoading(false);
@@ -114,7 +114,7 @@ const UsersList = () => {
 
   const handleActivate = () => {
     setisLoading(true);
-    RolesApi.activate({id: SelectedRole.id}).then((users) => {
+    RolesApi.activate({ id: SelectedRole.id }).then((users) => {
       // response handling
       setRoles(users);
       setisLoading(false);
@@ -148,13 +148,7 @@ const UsersList = () => {
           <Link to={'/roles/add'}>
             <Button
               variant='outlined'
-              disabled={
-                !checkModulePermission(
-                  userData,
-                  moduleName.ROLES,
-                  moduleAction.ADD,
-                )
-              }
+              disabled={!checkModulePermission(userData, moduleName.ROLES, moduleAction.ADD)}
             >
               Create Role
             </Button>

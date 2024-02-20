@@ -123,7 +123,13 @@ const Posts = () => {
       headerName: 'Created Date',
       flex: 1,
       renderCell: (params: any) => {
-        return <>{params?.row?.publishedAt ? format(parseISO(params?.row?.publishedAt), 'MMMM dd, yyyy') : null}</>;
+        return (
+          <>
+            {params?.row?.publishedAt
+              ? format(parseISO(params?.row?.publishedAt), 'MMMM dd, yyyy')
+              : null}
+          </>
+        );
       },
     },
     {

@@ -42,7 +42,7 @@ const BlockContent = ({ block }) => {
   if (type === 'paragraph') {
     return <p className='text-sm' dangerouslySetInnerHTML={{ __html: data.text }} />;
   }
-  if (type === "header") {
+  if (type === 'header') {
     if (data.level === 1) {
       return <h1 className='text-4xl font-bold' dangerouslySetInnerHTML={{ __html: data.text }} />;
     }

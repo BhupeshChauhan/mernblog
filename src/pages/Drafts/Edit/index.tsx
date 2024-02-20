@@ -4,13 +4,12 @@ import CustomEditor from '../../../components/CustomEditor';
 import DashboardCard from '../../../components/shared/DashboardCard';
 
 const PostEdit = () => {
-
   return (
-      <CreateEditorContextProvider>
+    <CreateEditorContextProvider>
       <DashboardCard>
-        <CustomEditor isEdit={true} draft={true}/>
+        <CustomEditor isEdit={true} draft={true} />
       </DashboardCard>
-      </CreateEditorContextProvider>
+    </CreateEditorContextProvider>
   );
 };
 

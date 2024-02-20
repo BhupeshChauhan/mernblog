@@ -30,7 +30,7 @@ const UsersEdit = () => {
       });
   };
 
-  console.log(userValues)
+  console.log(userValues);
 
   const getInitData = async () => {
     setIsLoading(true);

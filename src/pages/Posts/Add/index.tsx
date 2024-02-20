@@ -5,11 +5,11 @@ import DashboardCard from '../../../components/shared/DashboardCard';
 
 const PostAdd = () => {
   return (
-      <CreateEditorContextProvider>
+    <CreateEditorContextProvider>
       <DashboardCard>
         <CustomEditor />
       </DashboardCard>
-      </CreateEditorContextProvider>
+    </CreateEditorContextProvider>
   );
 };
 

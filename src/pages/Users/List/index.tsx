@@ -130,7 +130,7 @@ const UsersList = () => {
 
   const handleDelete = () => {
     setisLoading(true);
-    UsersApi.deactivate({id: SelectedUser.id}).then((users) => {
+    UsersApi.deactivate({ id: SelectedUser.id }).then((users) => {
       // response handling
       setUsers(users);
       setisLoading(false);
@@ -142,7 +142,7 @@ const UsersList = () => {
 
   const handleActivate = () => {
     setisLoading(true);
-    UsersApi.activate({id: SelectedUser.id}).then((users) => {
+    UsersApi.activate({ id: SelectedUser.id }).then((users) => {
       // response handling
       setUsers(users);
       setisLoading(false);

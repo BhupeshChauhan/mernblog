@@ -9,14 +9,13 @@ import DashboardCard from '../../../../components/shared/DashboardCard';
 const PublishSection = () => {
   return (
     <AnimationWapper>
-      
       <Grid container spacing={3}>
         <Grid item md={8} className='hidden md:block'>
           {/*  */}
-          
-    <div className='w-full bg-white p-6 rounded-md'>
-          <PreivewSection />
-    </div>
+
+          <div className='w-full bg-white p-6 rounded-md'>
+            <PreivewSection />
+          </div>
         </Grid>
         <Grid item md={4} xs={12}>
           <SettingsSection />

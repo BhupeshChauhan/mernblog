@@ -12,9 +12,9 @@ const blogStructure = {
   author: {
     personal_info: {},
   },
-  excerpt: '', 
-  visible: '', 
-  slug: ""
+  excerpt: '',
+  visible: '',
+  slug: '',
 };
 
 export function CreateEditorContextProvider({ children }: any) {

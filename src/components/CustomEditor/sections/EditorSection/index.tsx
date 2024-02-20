@@ -5,7 +5,7 @@ import { Typography } from '@mui/material';
 import { useEditorContext } from '../../../../context/CreateEditorContext';
 import AnimationWapper from '../../../../common/PageAnimation';
 
-const EditorSection = ({isEdit =false}) => {
+const EditorSection = ({ isEdit = false }) => {
   let {
     blog: { title, banner, content, tags, categories, des, author },
     setBlog,
@@ -38,32 +38,31 @@ const EditorSection = ({isEdit =false}) => {
   };
 
   useEffect(() => {
-    if(isEdit){
-      if(!textEditor.isReady && content){
+    if (isEdit) {
+      if (!textEditor.isReady && content) {
         setTextEditor(
           new EditorJS({
             holderId: 'textEditor',
             placeholder: 'Write your storyboard!',
             tools: EditorTools,
-            data: Array.isArray(content) ? content[0] : content
+            data: Array.isArray(content) ? content[0] : content,
           })
         );
       }
     } else {
-      if(!textEditor.isReady){
-      setTextEditor(
-        new EditorJS({
-          holderId: 'textEditor',
-          placeholder: 'Write your storyboard!',
-          tools: EditorTools,
-        })
-      );
+      if (!textEditor.isReady) {
+        setTextEditor(
+          new EditorJS({
+            holderId: 'textEditor',
+            placeholder: 'Write your storyboard!',
+            tools: EditorTools,
+          })
+        );
       }
     }
-    
-    }, [content]);
-    
-    console.log(content)
+  }, [content]);
+
+  console.log(content);
   return (
     <AnimationWapper>
       <div className='mb-4'>

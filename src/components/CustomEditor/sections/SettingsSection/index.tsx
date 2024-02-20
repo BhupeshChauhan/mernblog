@@ -18,13 +18,25 @@ import { useGlobalContext } from '../../../../context/GlobalContext';
 
 const SettingsSection = () => {
   let {
-    blog: { title, banner, content, tags, categories, des, author, excerpt, visible, slug, feature },
+    blog: {
+      title,
+      banner,
+      content,
+      tags,
+      categories,
+      des,
+      author,
+      excerpt,
+      visible,
+      slug,
+      feature,
+    },
     setBlog,
     textEditor,
     setTextEditor,
   } = useEditorContext();
-  console.log(content)
-  const {userData} = useGlobalContext()
+  console.log(content);
+  const { userData } = useGlobalContext();
   const [expanded, setExpanded] = React.useState<string | false>('panel1');
   const [categoriesList, setCategoriesList] = React.useState([]);
   const [tagsList, setTagsList] = React.useState([]);
@@ -73,12 +85,14 @@ const SettingsSection = () => {
   };
 
   const getInitailData = () => {
-    CategoriesApi.getAll().then((categories) => {
-      // response handling
-      setCategoriesList(categories);
-    }).catch((err) => {
-      console.error(err);
-    });
+    CategoriesApi.getAll()
+      .then((categories) => {
+        // response handling
+        setCategoriesList(categories);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     TagsApi.getAll()
       .then((products) => {
         // response handling
@@ -87,13 +101,13 @@ const SettingsSection = () => {
       .catch((err) => {
         console.error(err);
       });
-  }
+  };
 
   useEffect(() => {
-    getInitailData()
+    getInitailData();
     setBlog((prev) => ({ ...prev, author: userData.user._id }));
-  }, [])
-  
+  }, []);
+
   return (
     <>
       <div className='mb-4'>
@@ -206,7 +220,7 @@ const SettingsSection = () => {
               />
             </div>
             <div className='mb-2'>
-            <CustomSelect
+              <CustomSelect
                 value={feature}
                 handleChange={handleFeatureChange}
                 menuArray={[

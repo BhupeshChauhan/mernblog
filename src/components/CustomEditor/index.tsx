@@ -64,7 +64,7 @@ const CustomEditor = ({ isEdit = false, draft = false }) => {
       if (!slug.length) {
         return toast.error('Add blog slug to proceed.');
       }
-      if(draft) {
+      if (draft) {
         if (isEdit) {
           setisLoading(true);
           PostAPI.updateDraft(blog)
@@ -117,7 +117,6 @@ const CustomEditor = ({ isEdit = false, draft = false }) => {
             });
         }
       }
-      
     }
   };
 
@@ -171,13 +170,19 @@ const CustomEditor = ({ isEdit = false, draft = false }) => {
           </div>
           <div>
             <Button variant='contained' onClick={handleSubmit}>
-              {editorState === 'editor' ? 'Next' : draft ? "Save" : 'Publish'}
+              {editorState === 'editor' ? 'Next' : draft ? 'Save' : 'Publish'}
             </Button>
           </div>
         </Grid>
       </Grid>
       <Toaster />
-      { isLoading ? <CustomCircularProgress color='inherit' /> : editorState === 'editor' ? <EditorSection isEdit={isEdit} /> : <PublishSection />}
+      {isLoading ? (
+        <CustomCircularProgress color='inherit' />
+      ) : editorState === 'editor' ? (
+        <EditorSection isEdit={isEdit} />
+      ) : (
+        <PublishSection />
+      )}
     </>
   );
 };

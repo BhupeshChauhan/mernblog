@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  Stack,
-  InputAdornment,
-} from '@mui/material';
+import { Box, Stack, InputAdornment } from '@mui/material';
 import { MdEmail } from 'react-icons/md';
 import { TbPasswordMobilePhone } from 'react-icons/tb';
 

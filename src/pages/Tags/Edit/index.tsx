@@ -38,7 +38,7 @@ const TagsEdit = () => {
         setisLoading(false);
       });
   }, []);
-  
+
   return (
     <div className='w-full bg-white p-6 rounded-md'>
       {isLoading ? <CustomCircularProgress color='inherit' /> : <></>}
