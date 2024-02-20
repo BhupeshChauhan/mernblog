@@ -1,14 +1,5 @@
-// import { styled } from "@mui/material";
-import React from 'react';
 import { Link } from 'react-router-dom';
-const logo = require('../../../../assets/imgs/dfaxlogo.png');
-
-// const LinkStyled = styled(Link)(() => ({
-//   height: "70px",
-//   width: "180px",
-//   overflow: "hidden",
-//   display: "block",
-// }));
+import logo from '../../../../assets/imgs/dfaxlogo.png'
 
 const Logo = () => {
   return (

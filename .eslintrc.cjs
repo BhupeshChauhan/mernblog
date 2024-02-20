@@ -1,27 +1,19 @@
-{
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "jest": true
-  },
-  "extends": [
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended",
-    "plugin:import/recommended"
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
   ],
-  "overrides": [],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
-  "plugins": ["react", "@typescript-eslint", "react-hooks"],
-  "rules": {
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['react-refresh'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
@@ -34,11 +26,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "import/prefer-default-export": "off",
     "react/prop-types": "off",
-    "prettier/prettier": ["error", { "endOfLine": "auto" }]
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "@typescript-eslint/no-explicit-any": "off"
   },
-  "settings": {
-    "import/resolver": {
-      "typescript": {}
-    }
-  }
 }

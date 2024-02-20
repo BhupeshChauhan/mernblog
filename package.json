@@ -1,43 +1,14 @@
 {
-  "name": "frontendtemplate",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "npm test"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --fix",
-    "*.jsx": "eslint --fix",
-    "*.ts": "eslint --fix",
-    "*.tsx": "eslint --fix",
-    "*.{css,scss,json,md,html,xml,yml}": "prettier --write",
-    "*.{png,jpg,jpeg,gif,svg,woff,woff2,eot,ttf,otf}": "echo \"Asset files are not linted.\""
-  },
+  "name": "vite-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "format": "prettier --write \"**/*.+(ts|tsx|json|scss|md)\"",
-    "precommit": "lint-staged",
-    "analyze": "webpack-bundle-analyzer",
-    "deploy": "npm run build && node deploy.js"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BhupeshChauhan/frontendtemplate.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/BhupeshChauhan/frontendtemplate/issues"
-  },
-  "homepage": "https://github.com/BhupeshChauhan/frontendtemplate#readme",
   "dependencies": {
     "@editorjs/code": "^2.9.0",
     "@editorjs/editorjs": "^2.29.0",
@@ -56,6 +27,7 @@
     "@mui/material": "^5.15.9",
     "@mui/x-data-grid": "^6.19.4",
     "axios": "^1.6.7",
+    "clean-webpack-plugin": "^4.0.0",
     "date-fns": "^3.3.1",
     "formik": "^2.4.5",
     "framer-motion": "^11.0.3",
@@ -68,50 +40,18 @@
     "yup": "^1.3.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.11",
-    "@babel/eslint-parser": "^7.22.11",
-    "@babel/preset-env": "^7.22.10",
-    "@babel/preset-react": "^7.22.5",
-    "@babel/preset-typescript": "^7.22.11",
-    "@types/node": "^20.5.4",
-    "@types/react": "^18.2.21",
-    "@types/react-dom": "^18.2.7",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "autoprefixer": "^10.4.15",
-    "babel-loader": "^9.1.3",
-    "compression-webpack-plugin": "^10.0.0",
-    "css-loader": "^6.8.1",
-    "dotenv-webpack": "^8.0.1",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "autoprefixer": "^10.4.17",
     "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-config-standard-with-typescript": "^43.0.1",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-prettier": "^5.1.3",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "file-loader": "^6.2.0",
-    "html-loader": "^4.2.0",
-    "html-webpack-plugin": "^5.5.3",
-    "husky": "^8.0.3",
-    "less-loader": "^11.1.3",
-    "lint-staged": "^14.0.1",
-    "mini-css-extract-plugin": "^2.8.0",
-    "postcss": "^8.4.29",
-    "postcss-loader": "^7.3.3",
-    "postcss-preset-env": "^9.1.2",
-    "prettier": "^3.2.5",
-    "sass": "^1.70.0",
-    "sass-loader": "^13.3.2",
-    "style-loader": "^3.3.3",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
-    "terser-webpack-plugin": "^5.3.9",
-    "ts-loader": "^9.4.4",
-    "typescript": "^5.3.3",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "typescript": "^5.2.2",
+    "vite": "^5.1.0"
   }
 }

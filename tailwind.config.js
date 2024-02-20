@@ -1,8 +1,7 @@
 /* eslint-disable no-undef */
-/* eslint-disable prettier/prettier */
 // tailwind.config.js
 module.exports = {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: 'class', // Enable dark mode variants
   theme: {
     extend: {

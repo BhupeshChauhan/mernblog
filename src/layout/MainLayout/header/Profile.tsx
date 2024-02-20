@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import {
   Avatar,
@@ -14,7 +14,7 @@ import {
 import { MdOutlineContactMail, MdFace6 } from 'react-icons/md';
 import { useGlobalContext } from '../../../context/GlobalContext';
 
-const usericon = require('../../../assets/imgs/usericon.png');
+import usericon from '../../../assets/imgs/usericon.png'
 
 const Profile = () => {
   const [anchorEl2, setAnchorEl2] = useState(null);

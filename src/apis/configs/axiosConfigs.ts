@@ -2,11 +2,11 @@ import axios from 'axios';
 
 export const api = axios.create({
   withCredentials: true,
-  baseURL: process.env.APIURL,
+  baseURL: import.meta.env.VITE_APIURL,
 });
 
 // defining a custom error handler for all APIs
-const errorHandler = (error) => {
+const errorHandler = (error: any) => {
   const statusCode = error.response?.status;
 
   // logging only errors that are not 401
