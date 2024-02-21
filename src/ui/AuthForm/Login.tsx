@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Stack, InputAdornment } from '@mui/material';
 import { MdEmail } from 'react-icons/md';
 import { TbPasswordMobilePhone } from 'react-icons/tb';
@@ -101,7 +100,7 @@ const Login = ({ type }: loginType) => {
       </Stack>
       <Box>
         <button type='submit' className='btn-dark center mt-14'>
-          {type.replace('-', ' ')}
+          {type ? type.replace('-', ' '): null}
         </button>
       </Box>
     </form>

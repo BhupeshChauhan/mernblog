@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Search } from 'lucide-react';
-const logo = require('../../../assets/imgs/codegigslogo.png');
+import logo from '../../../assets/imgs/codegigslogo.png'
 import { Link } from 'react-router-dom';
 import { PiArticleMediumFill } from 'react-icons/pi';
 

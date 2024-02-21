@@ -1,14 +1,13 @@
 import { Checkbox, FormControlLabel } from '@mui/material';
-import React from 'react';
 
 const CustomCheckboxGroup = ({ CheckboxOptions, formik }: any) => {
   const checkInterminate = () => {
-    let values: any = [];
+    const values: any = [];
     CheckboxOptions.forEach((element: any) => {
       values.push(formik.values[element.name]);
     });
-    let check = values.every((value: any) => value && value === true);
-    let checkFalse = values.every((value: any) => value !== true);
+    const check = values.every((value: any) => value && value === true);
+    const checkFalse = values.every((value: any) => value !== true);
     if (checkFalse) {
       return false;
     } else if (!check) {
@@ -18,11 +17,11 @@ const CustomCheckboxGroup = ({ CheckboxOptions, formik }: any) => {
     }
   };
   const checkAll = () => {
-    let values: any = [];
+    const values: any = [];
     CheckboxOptions.forEach((element: any) => {
       values.push(formik.values[element.name]);
     });
-    let check = values.every((value: any) => value && value === true);
+    const check = values.every((value: any) => value && value === true);
     return check;
   };
   const handleChangeChild = (e: any, name: any) => {

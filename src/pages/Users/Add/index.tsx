@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import CustomDynamicForm from '../../../components/CustomDynamicForm';
@@ -16,7 +16,7 @@ const UsersAdd = () => {
   const onAddUser = async (values: any) => {
     setIsLoading(true);
     await UsersApi.create(values)
-      .then((tags) => {
+      .then(() => {
         // response handling
         navigate(`/users/list`);
         setIsLoading(false);

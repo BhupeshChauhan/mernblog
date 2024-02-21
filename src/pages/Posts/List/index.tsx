@@ -1,8 +1,8 @@
 import { GridColDef } from '@mui/x-data-grid';
 import CustomList from '../../../components/CustomPageLayout/CustomList';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Chip, Grid, Typography } from '@mui/material';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import checkModulePermission, {
   checkPermissionDelete,
   moduleAction,
@@ -94,7 +94,6 @@ const Posts = () => {
       headerName: 'Featured Image',
       flex: 1,
       renderCell: (params) => {
-        // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
         return <img src={params.value} width={100} height={60} />;
       },
     },

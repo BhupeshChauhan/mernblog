@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import AnimationWapper from '../../common/PageAnimation';
 import Login from '../../ui/AuthForm/Login';
 import { useGlobalContext } from '../../context/GlobalContext';
 import { useNavigate } from 'react-router-dom';
 
-const UserAuth = ({ type }) => {
-  const { userData, setUserData } = useGlobalContext();
+const UserAuth = ({ type }: any) => {
+  const { userData } = useGlobalContext();
   const navigate = useNavigate();
 
   useEffect(() => {

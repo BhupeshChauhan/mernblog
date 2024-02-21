@@ -1,7 +1,6 @@
-import React from 'react';
 import { Button } from '@mui/material';
 import CustomCircularProgress from '../../CustomCircularProgress';
-import CustomDynamicForm from 'components/CustomDynamicForm';
+import CustomDynamicForm from '../../CustomDynamicForm';
 import { Link } from 'react-router-dom';
 const CustomAdd = ({
   isLoading,
@@ -15,7 +14,7 @@ const CustomAdd = ({
   validationSchema,
   AddintionalFooterActions,
   AddintionalFooterComponent,
-}) => {
+}: any) => {
   if (AddintionalFooterActions) {
     return (
       <>
@@ -34,7 +33,7 @@ const CustomAdd = ({
           isClear={true}
           validationSchema={validationSchema}
           hideSubmit={true}
-          AddintionalFooterActions={(formik: any) => ({ AddintionalFooterComponent })}
+          AddintionalFooterActions={() => ({ AddintionalFooterComponent })}
         />
       </>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import EditorJS from '@editorjs/editorjs';
 import EditorTools from '../../../../utils/editor.tools';
 import { Typography } from '@mui/material';
@@ -6,35 +6,35 @@ import { useEditorContext } from '../../../../context/CreateEditorContext';
 import AnimationWapper from '../../../../common/PageAnimation';
 
 const EditorSection = ({ isEdit = false }) => {
-  let {
-    blog: { title, banner, content, tags, categories, des, author },
+  const {
+    blog: { title,  content,  des, },
     setBlog,
     textEditor,
     setTextEditor,
   } = useEditorContext();
 
-  const handleKeyDown = (event) => {
+  const handleKeyDown = (event: any) => {
     if (event.keyCode === 13) {
       event.preventDefault();
     }
   };
 
-  const handleTitleChange = (event) => {
-    let input = event.target;
+  const handleTitleChange = (event: any) => {
+    let input: any = event.target;
 
     input.style.height = 'auto';
     input.style.height = input.scrollHeight + 'px';
 
-    setBlog((prev) => ({ ...prev, title: input.value }));
+    setBlog((prev: any) => ({ ...prev, title: input.value }));
   };
 
-  const handleDescriptionChange = (event) => {
-    let input = event.target;
+  const handleDescriptionChange = (event: any) => {
+    let input: any = event.target;
 
     input.style.height = 'auto';
     input.style.height = input.scrollHeight + 'px';
 
-    setBlog((prev) => ({ ...prev, des: input.value }));
+    setBlog((prev: any) => ({ ...prev, des: input.value }));
   };
 
   useEffect(() => {

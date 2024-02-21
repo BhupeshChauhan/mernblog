@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import CustomDynamicForm from '../../../components/CustomDynamicForm';
@@ -15,7 +15,7 @@ const CategoriesEdit = () => {
     categoriesFormData();
   const onAddcategories = async (values: any) => {
     setisLoading(true);
-    CategoriesApi.update(values).then((categories) => {
+    CategoriesApi.update(values).then(() => {
       // response handling
       navigate(`/categories/list`);
       setisLoading(false);

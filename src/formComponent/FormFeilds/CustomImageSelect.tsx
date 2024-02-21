@@ -1,6 +1,4 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable @next/next/no-img-element */
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Button, Grid, ImageList, ImageListItem } from '@mui/material';
 import CustomDialog from '../../components/CustomDialog';
 import { useState } from 'react';
@@ -28,12 +26,12 @@ const CustomImageSelect = ({ value, handleChange, fullWidth, name, placeholder }
   const handleClose = () => {
     setOpen(false);
   };
-  const onChange = (value: any) => {
-    handleChange(value, name);
+  const onChange = (values: any) => {
+    handleChange(values, name);
     handleClose();
   };
 
-  const handleUplaodCallBack = () => {
+  const handleUplaodCallBack: any = () => {
     UploadImgApi.getImage().then((data) => {
       // response handling
       console.log(images);

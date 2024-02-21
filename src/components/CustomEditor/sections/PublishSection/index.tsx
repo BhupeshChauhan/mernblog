@@ -1,10 +1,8 @@
-import React from 'react';
 import { Toaster } from 'react-hot-toast';
 import AnimationWapper from '../../../../common/PageAnimation';
 import SettingsSection from '../SettingsSection';
 import { Grid } from '@mui/material';
 import PreivewSection from '../PreivewSection';
-import DashboardCard from '../../../../components/shared/DashboardCard';
 
 const PublishSection = () => {
   return (

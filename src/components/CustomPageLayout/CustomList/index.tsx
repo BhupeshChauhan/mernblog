@@ -1,14 +1,10 @@
-import React from 'react';
 import { Button } from '@mui/material';
 import CustomDataGrid from '../../../components/CustomDataGrid';
 import CustomCircularProgress from '../../../components/CustomCircularProgress';
 import CustomModal from '../../CustomModal';
 import { Link } from 'react-router-dom';
 import { useGlobalContext } from '../../../context/GlobalContext';
-import checkModulePermission, {
-  moduleAction,
-  moduleName,
-} from '../../../utils/checkModulePermission';
+import checkModulePermission, { moduleAction, moduleName } from '../../../utils/checkModulePermission';
 
 const CustomList = ({
   isLoading,
@@ -26,7 +22,7 @@ const CustomList = ({
   handleActivate,
   SelectedPost,
   setSelectedPost,
-}) => {
+}: any) => {
   const { userData } = useGlobalContext();
   return (
     <>
@@ -38,7 +34,7 @@ const CustomList = ({
           <Link to={addLink}>
             <Button
               variant='outlined'
-              // disabled={!checkModulePermission(userData, moduleName.POST, moduleAction.ADD)}
+              disabled={!checkModulePermission(userData, moduleName.POST, moduleAction.ADD)}
             >
               {addLinkTitle}
             </Button>

@@ -1,18 +1,14 @@
-import React from 'react';
 import { useEditorContext } from '../../../../context/CreateEditorContext';
 import defaultbanner from '../../../../assets/imgs/blogbanner.png';
 import BlockContent from './BlockContent';
 import { Typography } from '@mui/material';
 
 const PreivewSection = () => {
-  let {
-    blog: { title, banner, content, tags, categories, des, author, excerpt, visible, slug },
-    setBlog,
-    textEditor,
-    setTextEditor,
+  const {
+    blog: { title, banner, content, des, },
   } = useEditorContext();
-  const handleImageError = (e) => {
-    let img = e.target;
+  const handleImageError = (e: any) => {
+    let img: any = e.target;
 
     img.src = defaultbanner;
   };
@@ -27,7 +23,7 @@ const PreivewSection = () => {
       <h1 className='text-4xl font-medium mt-2 leading-tight line-clamp-2'>{title}</h1>
       <p className='text-xl font-medium mt-2 leading-tight line-clamp-2'>{des}</p>
       <div className='my-12 font-gelasio'>
-        {content.blocks.map((block, i) => {
+        {content.blocks.map((block: any, i: any) => {
           return (
             <div key={i} className='my-4 md:my-8'>
               <BlockContent block={block} />

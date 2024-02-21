@@ -17,23 +17,18 @@ import { TagsApi } from '../../../../apis/TagsApi';
 import { useGlobalContext } from '../../../../context/GlobalContext';
 
 const SettingsSection = () => {
-  let {
+  const {
     blog: {
-      title,
       banner,
       content,
       tags,
       categories,
-      des,
-      author,
       excerpt,
       visible,
       slug,
       feature,
     },
     setBlog,
-    textEditor,
-    setTextEditor,
   } = useEditorContext();
   console.log(content);
   const { userData } = useGlobalContext();
@@ -42,70 +37,71 @@ const SettingsSection = () => {
   const [tagsList, setTagsList] = React.useState([]);
 
   const handleChange = (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+    console.log(event)
     setExpanded(isExpanded ? panel : false);
   };
 
-  const handleChangeSelect = (value, name) => {
-    setBlog((prev) => ({ ...prev, banner: value }));
+  const handleChangeSelect = (value: any) => {
+    setBlog((prev: any) => ({ ...prev, banner: value }));
   };
 
-  const handleBannerUpload = async (e) => {
+  const handleBannerUpload = async (e: any) => {
     const img = await handleUploadImage(e.target.files[0]);
-    setBlog((prev) => ({ ...prev, banner: img }));
+    setBlog((prev: any) => ({ ...prev, banner: img }));
   };
 
-  const handleCategoriesChange = async (value) => {
-    setBlog((prev) => ({ ...prev, categories: value }));
+  const handleCategoriesChange = async (value: any) => {
+    setBlog((prev: any) => ({ ...prev, categories: value }));
   };
 
-  const handleTagsChange = async (value) => {
-    setBlog((prev) => ({ ...prev, tags: value }));
+  const handleTagsChange = async (value: any) => {
+    setBlog((prev: any) => ({ ...prev, tags: value }));
   };
 
-  const handleExcerptChange = async (value) => {
-    setBlog((prev) => ({ ...prev, excerpt: value }));
+  const handleExcerptChange = async (value: any) => {
+    setBlog((prev: any) => ({ ...prev, excerpt: value }));
   };
 
-  const handleVisibleChange = async (value) => {
-    setBlog((prev) => ({ ...prev, visible: value }));
+  const handleVisibleChange = async (value: any) => {
+    setBlog((prev: any) => ({ ...prev, visible: value }));
   };
 
-  const handleFeatureChange = async (value) => {
-    setBlog((prev) => ({ ...prev, feature: value }));
+  const handleFeatureChange = async (value: any) => {
+    setBlog((prev: any) => ({ ...prev, feature: value }));
   };
 
-  const handleSlugChange = async (value) => {
-    setBlog((prev) => ({ ...prev, slug: value }));
+  const handleSlugChange = async (value: any) => {
+    setBlog((prev: any) => ({ ...prev, slug: value }));
   };
 
-  const handleImageError = (e) => {
-    let img = e.target;
+  const handleImageError = (e: any) => {
+    const image: any = e.target;
 
-    img.src = defaultbanner;
+    image.src = defaultbanner;
   };
 
   const getInitailData = () => {
     CategoriesApi.getAll()
-      .then((categories) => {
+      .then((category: any) => {
         // response handling
-        setCategoriesList(categories);
+        setCategoriesList(category);
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.error(err);
       });
     TagsApi.getAll()
-      .then((products) => {
+      .then((products: any) => {
         // response handling
         setTagsList(products);
       })
-      .catch((err) => {
+      .catch((err: any) => {
         console.error(err);
       });
   };
 
   useEffect(() => {
     getInitailData();
-    setBlog((prev) => ({ ...prev, author: userData.user._id }));
+    setBlog((prev: any) => ({ ...prev, author: userData.user._id }));
   }, []);
 
   return (

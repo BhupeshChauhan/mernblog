@@ -1,4 +1,3 @@
-import React from 'react';
 import Menuitems from './MenuItems';
 import { Box, List } from '@mui/material';
 import NavItem from './NavItem';
@@ -7,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 const SidebarItems = ({ toggleMobileSidebar }: any) => {
   const { items } = Menuitems();
-  let location = useLocation();
+  const location = useLocation();
 
   return (
     <Box sx={{ px: 3 }}>

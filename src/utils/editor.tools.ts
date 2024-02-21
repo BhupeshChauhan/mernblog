@@ -9,12 +9,11 @@ import Embed from '@editorjs/embed';
 import { UploadImgApi } from '../apis/UploadImgApi';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import EditorJs from '@editorjs/editorjs';
 
-export const handleUploadImage = async (img) => {
+export const handleUploadImage = async (img: any) => {
   let imageUrl = null;
   if (img) {
-    let loadingToast = toast.loading('Uploading...');
+    toast.loading('Uploading...');
     await UploadImgApi.getImageUrl().then(async (data) => {
       const uploadUrl = data.uploadUrl;
       await axios({
@@ -51,8 +50,8 @@ export const handleUploadImage = async (img) => {
   return imageUrl;
 };
 
-const uploadImagebyURL = (e) => {
-  let link = new Promise((resolve, reject) => {
+const uploadImagebyURL = (e: any) => {
+  const link = new Promise((resolve, reject) => {
     try {
       resolve(e);
     } catch (error) {
@@ -68,7 +67,7 @@ const uploadImagebyURL = (e) => {
   });
 };
 
-const handleUploadByFile = (e) => {
+const handleUploadByFile = (e: any) => {
   return handleUploadImage(e).then((url: any) => {
     if (url) {
       return {
@@ -77,38 +76,6 @@ const handleUploadByFile = (e) => {
       };
     }
   });
-};
-
-const column_tools = {
-  embed: Embed,
-  link: Link,
-  image: {
-    class: Image,
-    config: {
-      uploader: {
-        uploadByUrl: uploadImagebyURL,
-        uploadByFile: handleUploadByFile,
-      },
-    },
-  },
-  list: {
-    class: List,
-    inlineToolBar: true,
-  },
-  marker: Marker,
-  inlineCode: InlineCode,
-  quote: {
-    class: Quote,
-    inlineToolBar: true,
-  },
-  header: {
-    class: Header,
-    config: {
-      placeholder: 'Type Heading ...',
-      levels: [1, 2, 3, 4, 5, 6],
-      defaultLevel: 3,
-    },
-  },
 };
 
 const EditorTools = {

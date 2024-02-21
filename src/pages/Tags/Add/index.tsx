@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import CustomDynamicForm from '../../../components/CustomDynamicForm';
@@ -13,7 +13,7 @@ const TagsAdd = () => {
 
   const onAddtags = async (values: any) => {
     setisLoading(true);
-    TagsApi.create(values).then((tags) => {
+    TagsApi.create(values).then(() => {
       // response handling
       navigate(`/tags/list`);
       setisLoading(false);

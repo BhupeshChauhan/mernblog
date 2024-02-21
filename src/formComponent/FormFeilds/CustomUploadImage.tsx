@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable @next/next/no-img-element */
-import React from 'react';
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -20,7 +17,7 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
-export default function CustomUploadImage({ showFile = false, onUpload = null }) {
+export default function CustomUploadImage({ showFile = false, onUpload = null }: any) {
   const [selectedFile, setselectedFile] = useState<any>(null);
   const handleUploadClick = async (event: any) => {
     const img = await handleUploadImage(event.target.files[0]);

@@ -1,4 +1,3 @@
-import React from 'react';
 import { FormControl, FormHelperText, MenuItem, OutlinedInput, Select } from '@mui/material';
 
 type Props = {
@@ -26,13 +25,10 @@ const CustomSelect = ({
   helperText,
 }: Props) => {
   const onChange = (event: any) => {
-    const {
-      target: { value },
-    } = event;
     if (multiple) {
-      handleChange(typeof value === 'string' ? value.split(',') : value, name);
+      handleChange(typeof event.target.value === 'string' ? value.split(',') :  event.target.value, name);
     } else {
-      handleChange(value, name);
+      handleChange(event.target.value, name);
     }
   };
   return (

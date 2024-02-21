@@ -1,14 +1,15 @@
-export function defineCancelApiObject(apiObject) {
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+export function defineCancelApiObject(apiObject: any) {
   // an object that will contain a cancellation handler
   // associated to each API property name in the apiObject API object
-  const cancelApiObject = {};
+  const cancelApiObject: any = {};
 
   // each property in the apiObject API layer object
   // is associated with a function that defines an API call
 
   // this loop iterates over each API property name
   Object.getOwnPropertyNames(apiObject).forEach((apiPropertyName) => {
-    const cancellationControllerObject = {
+    const cancellationControllerObject: any = {
       controller: undefined,
     };
 

@@ -27,6 +27,10 @@ module.exports = {
     "import/prefer-default-export": "off",
     "react/prop-types": "off",
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      { "allowExpressions": true } 
+  ]
   },
 }

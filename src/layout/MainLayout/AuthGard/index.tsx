@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import NotAuthorised from '../../NotAuthorised';
 import { useGlobalContext } from '../../../context/GlobalContext';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const AuthGard = ({ children }: any) => {
-  const { userData, setUserData } = useGlobalContext();
+  const { userData } = useGlobalContext();
   const [RoutePermission, setRoutePermission] = useState(true);
-  let location: any = useLocation();
+  const location: any = useLocation();
   const navigate = useNavigate();
 
-  function checkModulePermissions(userData: any) {
+  function checkModulePermissions(userDatas: any) {
     const path = location.pathname.split('/');
     if (path[1] && !path[2]) {
-      const modulePermissions = userData.modulePermissions[path[1]];
+      const modulePermissions = userDatas.modulePermissions[path[1]];
       if (path[1] === 'dashboard') {
         const operationPermission = modulePermissions?.view;
         setRoutePermission(operationPermission);
@@ -20,7 +20,7 @@ const AuthGard = ({ children }: any) => {
         setRoutePermission(false);
       }
     } else if (path[1] && path[2]) {
-      const modulePermissions = userData.modulePermissions[path[1]];
+      const modulePermissions = userDatas.modulePermissions[path[1]];
       if (path[2] === 'list') {
         const operationPermission = modulePermissions?.view;
         setRoutePermission(operationPermission);

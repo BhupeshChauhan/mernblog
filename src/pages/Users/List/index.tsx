@@ -1,4 +1,3 @@
-import React from 'react';
 import { Chip, Grid, Typography } from '@mui/material';
 import { GridColDef } from '@mui/x-data-grid';
 import { useEffect, useState } from 'react';
@@ -69,7 +68,6 @@ const UsersList = () => {
       headerName: 'Profile Picture',
       flex: 1,
       renderCell: (params) => {
-        // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
         return <img src={params.row.personal_info.profile_img} width={100} height={60} />;
       },
     },
@@ -78,7 +76,6 @@ const UsersList = () => {
       headerName: "User's Bio",
       flex: 1,
       renderCell: (params) => {
-        // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
         return <p>{params.row.personal_info.bio}</p>;
       },
     },
@@ -87,7 +84,6 @@ const UsersList = () => {
       headerName: "User's Name",
       flex: 1,
       renderCell: (params) => {
-        // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
         return <p>{params.row.personal_info.fullname}</p>;
       },
     },
@@ -96,7 +92,6 @@ const UsersList = () => {
       headerName: "User's Email",
       flex: 1,
       renderCell: (params) => {
-        // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
         return <p>{params.row.personal_info.email}</p>;
       },
     },

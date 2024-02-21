@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Button } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import CustomDynamicForm from '../../../components/CustomDynamicForm';
@@ -12,9 +12,11 @@ const CategoriesAdd = () => {
   const { categoriesformArray, categoriesInitialValues, categoriesValidationSchema } =
     categoriesFormData();
   const onAddcategories = async (values: any) => {
-    CategoriesApi.create(values).then((categories) => {
+    setisLoading(true)
+    CategoriesApi.create(values).then(() => {
       // response handling
       navigate(`/categories/list`);
+      setisLoading(false);
     });
   };
   return (

@@ -1,6 +1,4 @@
-import React from 'react';
-
-const Img = ({ url, caption }) => {
+const Img = ({ url, caption }: any) => {
   return (
     <>
       <div className='w-full aspect-video rounded-lg overflow-hidden bg-grey mt-4'>
@@ -15,7 +13,7 @@ const Img = ({ url, caption }) => {
   );
 };
 
-const Quote = ({ quote, caption }) => {
+const Quote = ({ quote, caption }: any) => {
   return (
     <div className='bg-darkGrey p-3 pl-5 border-l-4 border-darkGrey'>
       <p className='text-xl leading-10 md:text-2xl'>{quote}</p>
@@ -24,10 +22,10 @@ const Quote = ({ quote, caption }) => {
   );
 };
 
-const List = ({ style, items }) => {
+const List = ({ style, items }: any) => {
   return (
     <ol>
-      {items.map((item, index) => (
+      {items.map((item: any, index: any) => (
         <li
           key={index}
           className={`pl-5 ${style === 'ordered' ? 'list-decimal' : 'list-disc'}`}
@@ -37,7 +35,7 @@ const List = ({ style, items }) => {
     </ol>
   );
 };
-const BlockContent = ({ block }) => {
+const BlockContent = ({ block }: any) => {
   const { type, data } = block;
   if (type === 'paragraph') {
     return <p className='text-sm' dangerouslySetInnerHTML={{ __html: data.text }} />;

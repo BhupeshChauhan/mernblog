@@ -1,6 +1,4 @@
-import React from 'react';
-
-const MiniLayout = ({ children }) => {
+const MiniLayout = ({ children }: any) => {
   return (
     <>
       <main className='flex min-h-screen'>

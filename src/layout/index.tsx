@@ -1,10 +1,9 @@
-import React from 'react';
 import MainLayout from './MainLayout';
 import MiniLayout from './MiniLayout';
 import { Outlet } from 'react-router-dom';
 import AuthGard from './MainLayout/AuthGard';
 
-const Layout = ({ type }) => {
+const Layout = ({ type }: any) => {
   return (
     <>
       <AuthGard>

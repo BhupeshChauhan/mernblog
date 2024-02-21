@@ -1,5 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { Button, ImageList, ImageListItem } from '@mui/material';
 import DashboardCard from '../../../components/shared/DashboardCard';
 import { UploadImgApi } from '../../../apis/UploadImgApi';

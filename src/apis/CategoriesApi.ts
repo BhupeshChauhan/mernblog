@@ -1,90 +1,65 @@
 import { api } from './configs/axiosConfigs';
-import { defineCancelApiObject } from './configs/axiosUtils';
 
 export const CategoriesApi = {
-  get: async function (id, cancel = false) {
+  get: async function (id: any) {
     const response = await api.request({
       url: `/categories/${id}`,
       method: 'GET',
-      // retrieving the signal value by using the property name
-      signal: cancel
-        ? cancelApiObject[this.get.name].handleRequestCancellation().signal
-        : undefined,
     });
 
     // returning the post returned by the API
     return response.data.categories;
   },
-  getAll: async function (cancel = false) {
+  getAll: async function () {
     const response = await api.request({
       url: '/categories',
       method: 'GET',
-      signal: cancel
-        ? cancelApiObject[this.getAll.name].handleRequestCancellation().signal
-        : undefined,
     });
 
     return response.data.categories;
   },
-  search: async function (name, cancel = false) {
+  search: async function (name: any) {
     const response = await api.request({
       url: '/categories/search',
       method: 'GET',
       params: {
         name: name,
       },
-      signal: cancel
-        ? cancelApiObject[this.search.name].handleRequestCancellation().signal
-        : undefined,
     });
 
     return response.data.categories;
   },
-  create: async function (category, cancel = false) {
+  create: async function (category: any) {
     await api.request({
       url: `/categories`,
       method: 'POST',
       data: category,
-      signal: cancel
-        ? cancelApiObject[this.create.name].handleRequestCancellation().signal
-        : undefined,
     });
   },
-  update: async function (category, cancel = false) {
+  update: async function (category: any) {
     await api.request({
       url: `/categories/${category.id}`,
       method: 'PATCH',
       data: category,
-      signal: cancel
-        ? cancelApiObject[this.create.name].handleRequestCancellation().signal
-        : undefined,
     });
   },
-  deactivate: async function (category, cancel = false) {
+  deactivate: async function (category: any) {
     const response = await api.request({
       url: `/categories/deactivate`,
       method: 'POST',
       data: category,
-      signal: cancel
-        ? cancelApiObject[this.create.name].handleRequestCancellation().signal
-        : undefined,
     });
 
     return response.data.categories;
   },
-  activate: async function (category, cancel = false) {
+  activate: async function (category: any) {
     const response = await api.request({
       url: `/categories/activate`,
       method: 'POST',
       data: category,
-      signal: cancel
-        ? cancelApiObject[this.create.name].handleRequestCancellation().signal
-        : undefined,
     });
 
     return response.data.categories;
   },
 };
 
-// defining the cancel API object for CategoriesApi
-const cancelApiObject = defineCancelApiObject(CategoriesApi);

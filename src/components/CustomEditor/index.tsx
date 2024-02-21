@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import EditorSection from './sections/EditorSection';
@@ -10,19 +10,18 @@ import CustomCircularProgress from '../../components/CustomCircularProgress';
 
 const CustomEditor = ({ isEdit = false, draft = false }) => {
   const [isLoading, setisLoading] = useState(false);
-  let {
-    blog: { title, banner, content, tags, categories, des, author, excerpt, visible, slug },
+  const {
+    blog: { title, banner, tags, categories, des, excerpt, visible, slug },
     blog,
     setBlog,
     textEditor,
-    setTextEditor,
     editorState,
     setEditorState,
   } = useEditorContext();
 
   const navigate = useNavigate();
 
-  const handleSubmit = (draft) => {
+  const handleSubmit = (draft: any) => {
     if (editorState === 'editor') {
       if (!title.length) {
         return toast.error('Write blog title to proceed.');
@@ -33,15 +32,15 @@ const CustomEditor = ({ isEdit = false, draft = false }) => {
       if (textEditor.isReady) {
         textEditor
           .save()
-          .then((data) => {
+          .then((data: any) => {
             if (data.blocks.length) {
-              setBlog((prev) => ({ ...prev, content: data }));
+              setBlog((prev: any) => ({ ...prev, content: data }));
               setEditorState('publish');
             } else {
               return toast.error('Write content in blog to proceed.');
             }
           })
-          .catch((error) => {
+          .catch((error: any) => {
             console.log(error);
           });
       }
@@ -68,7 +67,7 @@ const CustomEditor = ({ isEdit = false, draft = false }) => {
         if (isEdit) {
           setisLoading(true);
           PostAPI.updateDraft(blog)
-            .then((categories) => {
+            .then(() => {
               // response handling
               navigate(`/draft/list`);
               setisLoading(false);
@@ -80,7 +79,7 @@ const CustomEditor = ({ isEdit = false, draft = false }) => {
         } else {
           setisLoading(true);
           PostAPI.createDraft(blog)
-            .then((categories) => {
+            .then(() => {
               // response handling
               navigate(`/draft/list`);
               setisLoading(false);
@@ -94,7 +93,7 @@ const CustomEditor = ({ isEdit = false, draft = false }) => {
         if (isEdit) {
           setisLoading(true);
           PostAPI.update(blog)
-            .then((categories) => {
+            .then(() => {
               // response handling
               navigate(`/posts/list`);
               setisLoading(false);
@@ -106,7 +105,7 @@ const CustomEditor = ({ isEdit = false, draft = false }) => {
         } else {
           setisLoading(true);
           PostAPI.create(blog)
-            .then((categories) => {
+            .then(() => {
               // response handling
               navigate(`/posts/list`);
               setisLoading(false);

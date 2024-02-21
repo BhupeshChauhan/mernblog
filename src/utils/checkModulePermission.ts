@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const moduleAction = {
   ADD: 'add',
   EDIT: 'edit',
@@ -22,23 +20,23 @@ export const moduleName = {
   CLIENTUSERS: 'clientUser',
 };
 
-export const checkPermissionDelete = (userData: any, params: any, moduleName: any): boolean => {
-  let disable = false;
-  if (params.row.inActive) {
-    disable = !checkModulePermission(userData, moduleName, moduleAction.ACTIVATE);
-  } else if (!params.row.inActive) {
-    disable = !checkModulePermission(userData, moduleName, moduleAction.DEACTIVATE);
-  }
-  return disable;
-};
-
-const checkModulePermission = (userData: any, moduleName: any, moduleAction: any) => {
+const checkModulePermission = (userData: any, moduleNames: any, moduleActions: any) => {
   if (moduleName && moduleAction) {
-    const modulePermissions = userData.modulePermissions?.[moduleName];
-    const operationPermission = modulePermissions?.[moduleAction];
+    const modulePermissions = userData.modulePermissions?.[moduleNames];
+    const operationPermission = modulePermissions?.[moduleActions];
     return operationPermission;
   }
   return false;
 };
 
 export default checkModulePermission;
+
+export const checkPermissionDelete = (userData: any, params: any, moduleNames: any): boolean => {
+  let disable = false;
+  if (params.row.inActive) {
+    disable = !checkModulePermission(userData, moduleNames, moduleAction.ACTIVATE);
+  } else if (!params.row.inActive) {
+    disable = !checkModulePermission(userData, moduleNames, moduleAction.DEACTIVATE);
+  }
+  return disable;
+};

@@ -1,7 +1,6 @@
-import React from 'react';
 import { Button } from '@mui/material';
-import CustomCircularProgress from 'components/CustomCircularProgress';
-import CustomDynamicForm from 'components/CustomDynamicForm';
+import CustomCircularProgress from '../../CustomCircularProgress';
+import CustomDynamicForm from '../../CustomDynamicForm';
 import { Link } from 'react-router-dom';
 
 const UsersEdit = ({
@@ -17,7 +16,7 @@ const UsersEdit = ({
   editValues,
   AddintionalFooterActions,
   AddintionalFooterComponent,
-}) => {
+}: any) => {
   if (AddintionalFooterActions) {
     return (
       <>
@@ -38,7 +37,7 @@ const UsersEdit = ({
           isEdit={true}
           editValues={editValues}
           hideSubmit={true}
-          AddintionalFooterActions={(formik: any) => ({ AddintionalFooterComponent })}
+          AddintionalFooterActions={() => ({ AddintionalFooterComponent })}
         />
       </>
     );

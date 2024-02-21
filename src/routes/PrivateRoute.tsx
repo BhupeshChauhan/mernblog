@@ -1,8 +1,7 @@
 // components/PrivateRoute.js
-import React from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
-const PrivateRoute = ({ element }) => {
+const PrivateRoute = ({ element }: any) => {
   const navigate = useNavigate();
   const isAuthenticated = /* Check your authentication state here */ true;
 

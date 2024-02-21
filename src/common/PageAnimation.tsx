@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { AnimatePresence, motion } from 'framer-motion';
 const AnimationWapper = ({
   children,
@@ -7,7 +7,7 @@ const AnimationWapper = ({
   animate = { opacity: 1 },
   transition = { duration: 1 },
   className = '',
-}) => {
+}: any) => {
   return (
     <AnimatePresence>
       <motion.div

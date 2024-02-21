@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { styled, Container, Box, ThemeProvider } from '@mui/material';
-import { useGlobalContext } from '../../context/GlobalContext';
+import { useState } from 'react';
+import { styled, Container, ThemeProvider } from '@mui/material';
 import { baselightTheme } from '../../theme/DefaultColors';
 import Sidebar from './sidebar/Sidebar';
 import Header from './header/Header';
@@ -24,9 +23,7 @@ const PageWrapper = styled('div')(() => ({
 }));
 
 const FullLayout = ({ children }: any) => {
-  const { userData, setUserData } = useGlobalContext();
-  let location = useLocation();
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const location: any = useLocation();
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
   return (
@@ -37,7 +34,7 @@ const FullLayout = ({ children }: any) => {
           {/* Sidebar */}
           {/* ------------------------------------------- */}
           <Sidebar
-            isSidebarOpen={isSidebarOpen}
+            isSidebarOpen={true}
             isMobileSidebarOpen={isMobileSidebarOpen}
             onSidebarClose={() => setMobileSidebarOpen(false)}
           />

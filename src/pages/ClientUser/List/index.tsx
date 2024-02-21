@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { GridColDef } from '@mui/x-data-grid';
 import { useState } from 'react';
 import CustomDataGrid from '../../../components/CustomDataGrid';
@@ -25,7 +25,7 @@ const ClientUser = () => {
       field: 'role',
       headerName: "User's Role",
       flex: 1,
-      renderCell: (params) => <>User</>,
+      renderCell: () => <>User</>,
     },
     {
       field: 'createdAt',
@@ -33,6 +33,10 @@ const ClientUser = () => {
       flex: 1,
     },
   ];
+  useEffect(() => {
+    setUsers([])
+  }, [])
+  
   return (
     <>
       {/* {isLoading ? <CustomCircularProgress color="inherit" /> : <></>} */}
