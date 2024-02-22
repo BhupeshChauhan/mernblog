@@ -62,7 +62,6 @@ const EditorSection = ({ isEdit = false }) => {
     }
   }, [content]);
 
-  console.log(content);
   return (
     <AnimationWapper>
       <div className='mb-4'>
@@ -90,7 +89,7 @@ const EditorSection = ({ isEdit = false }) => {
       </div>
       <hr className='w-full opacity-50 my-5' />
       <div className='p-6'>
-        <div id='textEditor' className='font-gelasio' />
+        <div id='textEditor' className='font-gelasio' key={content} />
       </div>
     </AnimationWapper>
   );

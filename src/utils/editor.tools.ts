@@ -6,49 +6,6 @@ import InlineCode from '@editorjs/inline-code';
 import Image from '@editorjs/image';
 import Header from '@editorjs/header';
 import Embed from '@editorjs/embed';
-import { UploadImgApi } from '../apis/UploadImgApi';
-import toast from 'react-hot-toast';
-import axios from 'axios';
-
-export const handleUploadImage = async (img: any) => {
-  let imageUrl = null;
-  if (img) {
-    toast.loading('Uploading...');
-    await UploadImgApi.getImageUrl().then(async (data) => {
-      const uploadUrl = data.uploadUrl;
-      await axios({
-        method: 'PUT',
-        url: uploadUrl,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        data: img,
-      })
-        .then(async () => {
-          if (uploadUrl) {
-            await UploadImgApi.uploadImage({
-              filename: img.name,
-              contentType: img.type,
-              size: img.size,
-              imageUrl: uploadUrl?.split('?')[0],
-              alt: img.name?.split('.')[0],
-            }).then(() => {
-              toast.dismiss(uploadUrl);
-              toast.success('Image Uploaded Successfully');
-
-              imageUrl = uploadUrl?.split('?')[0];
-            });
-          }
-        })
-        .catch((error) => {
-          console.log('error: ' + error.message);
-          toast.dismiss(uploadUrl);
-          toast.error('Image Upload Failed');
-        });
-    });
-  }
-  return imageUrl;
-};
 
 const uploadImagebyURL = (e: any) => {
   const link = new Promise((resolve, reject) => {

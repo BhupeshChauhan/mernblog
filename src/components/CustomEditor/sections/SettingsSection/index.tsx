@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import CustomImageSelect from '../../../../formComponent/FormFeilds/CustomImageSelect';
-import { handleUploadImage } from '../../../../utils/editor.tools';
 import defaultbanner from '../../../../assets/imgs/blogbanner.png';
 import {
   Accordion,
@@ -15,6 +14,7 @@ import { useEditorContext } from '../../../../context/CreateEditorContext';
 import { CategoriesApi } from '../../../../apis/CategoriesApi';
 import { TagsApi } from '../../../../apis/TagsApi';
 import { useGlobalContext } from '../../../../context/GlobalContext';
+import { handleUploadImage } from '../../../../utils/uploadImage';
 
 const SettingsSection = () => {
   const {

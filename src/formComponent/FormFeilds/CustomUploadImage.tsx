@@ -3,7 +3,8 @@ import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useState } from 'react';
 import { Grid } from '@mui/material';
-import { handleUploadImage } from '../../utils/editor.tools';
+import { handleUploadImage } from '../../utils/uploadImage';
+import { Toaster } from 'react-hot-toast';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -20,13 +21,14 @@ const VisuallyHiddenInput = styled('input')({
 export default function CustomUploadImage({ showFile = false, onUpload = null }: any) {
   const [selectedFile, setselectedFile] = useState<any>(null);
   const handleUploadClick = async (event: any) => {
-    const img = await handleUploadImage(event.target.files[0]);
+    const img = await handleUploadImage(event.target.files[0])
     if (onUpload) {
       onUpload(img);
     }
     setselectedFile(img);
   };
   return (
+    <>
     <Grid container direction='column' spacing={2}>
       <Grid item>
         <Button component='label' variant='contained' startIcon={<CloudUploadIcon />}>
@@ -41,5 +43,7 @@ export default function CustomUploadImage({ showFile = false, onUpload = null }:
         </Grid>
       ) : null}
     </Grid>
+    <Toaster />
+    </>
   );
 }

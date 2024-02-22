@@ -82,6 +82,30 @@ const categoriesFormData = () => {
       lg: 6,
       xl: 6,
     },
+    {
+      name: 'type',
+      label: 'Categories Type',
+      placeholder: 'Enter Categories Type',
+      formInputType: 'select',
+      required: true,
+      xs: 6,
+      sm: 6,
+      lg: 6,
+      xl: 6,
+      menuArray: [
+        {
+          name: 'series',
+        },
+        {
+          name: 'resorces',
+        },
+        {
+          name: 'blog',
+        },
+      ],
+      fullWidth: true,
+      multiple: true,
+    },
   ];
 
   const categoriesInitialValues = {
@@ -89,6 +113,7 @@ const categoriesFormData = () => {
     slug: '',
     description: '',
     featuredImage: '',
+    type: [],
   };
 
   const categoriesValidationSchema = Yup.object({
@@ -96,6 +121,7 @@ const categoriesFormData = () => {
     slug: Yup.string().required('Slug is required'),
     description: Yup.string().required('Description is required'),
     featuredImage: Yup.string().required('Featured Image is required'),
+    type: Yup.array().required('Category Type Image is required'),
   });
 
   return {

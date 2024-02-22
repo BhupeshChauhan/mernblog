@@ -148,7 +148,7 @@ const FormComponent: React.FC<IFormComponent> = ({
                     error={formik.touched[element.name] && Boolean(formik.errors[element.name])}
                     helperText={formik.touched[element.name] && formik.errors[element.name]}
                   />
-                  <Input name={element?.id} className='hidden'></Input>
+                  <Input name={element?.id} style={{ display: 'none' }}></Input>
                 </>
               ) : null}
               {element.formInputType === 'imageSelector' ? (
