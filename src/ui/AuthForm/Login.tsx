@@ -4,10 +4,10 @@ import { TbPasswordMobilePhone } from 'react-icons/tb';
 
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import CustomTextField from '../../formComponent/FormFeilds/CustomTextField';
-import { useGlobalContext } from '../../context/GlobalContext';
+import CustomTextField from '../../FormComponent/FormFeilds/CustomTextField';
+import { useGlobalContext } from '../../Context/GlobalContext';
 import { useNavigate } from 'react-router-dom';
-import { UsersApi } from '../../apis/UsersApi';
+import { UsersApi } from '../../Modules/UMS/apis/UsersApi';
 
 interface loginType {
   type?: string;

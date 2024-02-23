@@ -24,16 +24,16 @@ const uploadImagebyURL = (e: any) => {
   });
 };
 
-const handleUploadByFile = (e: any) => {
-  return handleUploadImage(e).then((url: any) => {
-    if (url) {
-      return {
-        success: 1,
-        file: { url },
-      };
-    }
-  });
-};
+// const handleUploadByFile = (e: any) => {
+//   return handleUploadImage(e).then((url: any) => {
+//     if (url) {
+//       return {
+//         success: 1,
+//         file: { url },
+//       };
+//     }
+//   });
+// };
 
 const EditorTools = {
   embed: Embed,
@@ -43,7 +43,7 @@ const EditorTools = {
     config: {
       uploader: {
         uploadByUrl: uploadImagebyURL,
-        uploadByFile: handleUploadByFile,
+        // uploadByFile: handleUploadByFile,
       },
     },
   },

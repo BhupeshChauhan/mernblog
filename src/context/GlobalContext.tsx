@@ -4,6 +4,7 @@ const GlobalContext = createContext<any>(null);
 
 export function GlobalContextProvider({ children }: any) {
   const [alertMessage, setAlertMessage] = useState('');
+  const [pageTitle, setPageTitle] = useState('')
   const [severity, setSeverity] = useState('');
   const [openCustomSnackBar, setOpenCustomSnackBar] = useState(false);
   const [autoHideDuration, setAutoHideDuration] = useState(1000);
@@ -39,6 +40,7 @@ export function GlobalContextProvider({ children }: any) {
         setAutoHideDuration,
         userData,
         setUserData,
+        pageTitle, setPageTitle
       }}
     >
       {children}

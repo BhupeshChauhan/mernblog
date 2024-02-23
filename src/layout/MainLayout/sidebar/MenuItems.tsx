@@ -1,5 +1,5 @@
 import { uniqueId } from 'lodash';
-import { useGlobalContext } from '../../../context/GlobalContext';
+import { useGlobalContext } from '../../../Context/GlobalContext';
 import { MdDashboard, MdOutlineAdminPanelSettings, MdFace6 } from 'react-icons/md';
 import { BiSolidBookContent, BiBookContent } from 'react-icons/bi';
 import { BsListColumns } from 'react-icons/bs';

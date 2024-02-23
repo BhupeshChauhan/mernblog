@@ -1,35 +1,64 @@
 import { Button } from '@mui/material';
-import CustomDataGrid from '../../../components/CustomDataGrid';
-import CustomCircularProgress from '../../../components/CustomCircularProgress';
+import CustomDataGrid from '../../CustomDataGrid';
 import CustomModal from '../../CustomModal';
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from '../../../context/GlobalContext';
-import checkModulePermission, { moduleAction, moduleName } from '../../../utils/checkModulePermission';
+import { useGlobalContext } from '../../../Context/GlobalContext';
+import { useEffect } from 'react';
+import useListView from '../../../Hooks/useListView';
+import checkModulePermission, { moduleAction, moduleName } from '../../../Utils/checkModulePermission';
 
 const CustomList = ({
-  isLoading,
-  pageTitle,
-  pageSubTitle = '',
   addLink,
   addLinkTitle,
-  data,
-  columnsDef,
-  DeleteMoadal,
-  setDeleteMoadal,
-  handleDelete,
-  ActivateMoadal,
-  setActivateMoadal,
-  handleActivate,
-  SelectedPost,
-  setSelectedPost,
+  deleteAPI,
+  activateAPI,
+  getAPI,
+  columnsDef
 }: any) => {
   const { userData } = useGlobalContext();
+  const {
+    isLoading,
+    deleteMoadal,
+    selected,
+    activateMoadal,
+    data,
+    filters,
+    pagination,
+    setDeleteMoadal,
+    setSelected,
+    setActivateMoadal,
+    handleActivate,
+    handleDelete,
+    handleSearch,
+    handleChangeRowsPerPage,
+    handleChangePage,
+    handleGetInitialData,
+    handleFilterChange,
+    handleBlur
+  } = useListView(
+    { 
+      deleteAPI: (payload: any) => deleteAPI(payload), 
+      activateAPI: (payload: any) => activateAPI(payload), 
+      getAPI: (payload: any) => getAPI(payload)
+    })
+
+    const column = columnsDef(setActivateMoadal, setSelected, setDeleteMoadal)
+  useEffect(() => {
+    handleGetInitialData({ maxLimit: 10, page: 1, query: null })
+  }, []);
   return (
     <>
-      {isLoading ? <CustomCircularProgress color='inherit' /> : <></>}
       <CustomDataGrid
-        title={pageTitle}
-        subtitle={pageSubTitle ? pageSubTitle : ''}
+        title={<input
+          type="text"
+          placeholder="Search"
+          value={filters.query}
+          onChange={handleFilterChange}
+          className="w-full md:w-auto text-sm bg-grey p-2 md:pr-1 rounded-full placeholder:text-dark-grey md:pl-6 placeholder:text-sm"
+          onKeyDown={handleSearch}
+          onBlur={handleBlur}
+        />}
+        isloading={isLoading}
         action={
           <Link to={addLink}>
             <Button
@@ -40,39 +69,42 @@ const CustomList = ({
             </Button>
           </Link>
         }
-        columns={columnsDef}
+        columns={column}
         rows={data}
-        pageSize={10}
-        pageSizeOptions={[10, 25, 50, 100]}
+        pagelength={pagination.pagelength}
         disableRowSelectionOnClick={true}
         disableColumnSelector={true}
+        page={pagination.page}
+  handleChangePage={handleChangePage}
+  rowsPerPage={pagination.pageSize}
+  handleChangeRowsPerPage={handleChangeRowsPerPage}
       />
       <CustomModal
-        open={DeleteMoadal}
-        title={`Do you want to Deactivate ${SelectedPost?.name} post?`}
+        open={deleteMoadal}
+        title={`Do you want to Deactivate ${selected?.name} post?`}
         content={'Note: If you deactivate this post then it will not be visible anymore'}
         handleClose={() => {
           setDeleteMoadal(false);
-          setSelectedPost({});
+          setSelected({});
         }}
         onOk={handleDelete}
         onCancel={() => {
           setDeleteMoadal(false);
-          setSelectedPost({});
+          setSelected({});
         }}
       />
       <CustomModal
-        open={ActivateMoadal}
-        title={`Do you want to activate ${SelectedPost?.name} post?`}
+        open={activateMoadal}
+        title={`Do you want to activate ${selected?.name} post?`}
         content={'Note: If you activate this post then it will become visible automatically'}
         handleClose={() => {
           setActivateMoadal(false);
-          setSelectedPost({});
+          setSelected({});
         }}
         onOk={handleActivate}
         onCancel={() => {
           setActivateMoadal(false);
-          setSelectedPost({});
+          setSelected({});
         }}
       />
     </>

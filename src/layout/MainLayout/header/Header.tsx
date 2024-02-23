@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -6,12 +6,15 @@ import {
   Stack,
   IconButton,
   Grid,
+  Typography,
 } from '@mui/material';
 import PropTypes from 'prop-types';
 import { MdMenuOpen } from 'react-icons/md';
 
 // components
 import Profile from './Profile';
+import { useGlobalContext } from '../../../Context/GlobalContext';
+import { useLocation } from 'react-router-dom';
 
 interface ItemType {
   toggleMobileSidebar: (event: React.MouseEvent<HTMLElement>) => void;
@@ -20,6 +23,9 @@ interface ItemType {
 const Header = ({ toggleMobileSidebar }: ItemType) => {
   // const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
   // const lgDown = useMediaQuery((theme) => theme.breakpoints.down('lg'));
+  const {pageTitle, setPageTitle} = useGlobalContext()
+
+  const location = useLocation();
 
   const AppBarStyled = styled(AppBar)(({ theme }) => ({
     boxShadow: 'none',
@@ -37,12 +43,26 @@ const Header = ({ toggleMobileSidebar }: ItemType) => {
     color: theme.palette.text.secondary,
   }));
 
+  useEffect(() => {
+    if(location.pathname.split('/').length === 2) setPageTitle(location.pathname.split('/')[1])
+    if(location.pathname.split('/').length > 2) {
+      if(location.pathname.split('/')[2] === 'list'){
+        setPageTitle(`${location.pathname.split('/')[1]} ${location.pathname.split('/')[2]}`);
+      } else {
+        setPageTitle(`${location.pathname.split('/')[2]} ${location.pathname.split('/')[1]}`);
+      }
+    }
+  }, [location.pathname])
+
+  console.log(location.pathname.split('/'))
+  
+
   return (
     <AppBarStyled position='sticky' color='default'>
       <ToolbarStyled className='p-0' sx={{ width: 'calc(100vw-270px)' }}>
         <Grid container>
-          <Grid item xs={1}>
-            <IconButton
+          <Grid item xs={11} className='flex items-center justify-start'>
+          <IconButton
               color='inherit'
               aria-label='menu'
               onClick={toggleMobileSidebar}
@@ -51,12 +71,13 @@ const Header = ({ toggleMobileSidebar }: ItemType) => {
                   lg: 'none',
                   xs: 'inline',
                 },
+                marginRight: '10px',
               }}
             >
               <MdMenuOpen width='100' height='100' />
             </IconButton>
+            {pageTitle ? <Typography variant='h5' className='capitalize text-black'>{pageTitle}</Typography> : ''}
           </Grid>
-          <Grid item xs={10} />
           <Grid item xs={1}>
             {/* <IconButton
           size="large"

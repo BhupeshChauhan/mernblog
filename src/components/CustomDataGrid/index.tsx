@@ -1,19 +1,23 @@
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
-import { Card, CardContent, Stack, Typography } from '@mui/material';
+import { Card, CardContent, Stack, TablePagination, Typography } from '@mui/material';
 
 type Props = {
   rows: any;
   columns: any;
-  title?: string;
+  title?: any;
   subtitle?: string;
   action?: JSX.Element | any;
   footer?: JSX.Element;
-  pageSize?: number;
-  pageSizeOptions?: any;
+  pagelength?: any;
   checkboxSelection?: any;
   disableRowSelectionOnClick?: any;
   disableColumnSelector?: any;
+  isloading?: any
+  page?: any
+  handleChangePage?: any
+  rowsPerPage?: any;
+  handleChangeRowsPerPage?: any
 };
 
 export default function CustomDataGrid({
@@ -21,13 +25,16 @@ export default function CustomDataGrid({
   subtitle,
   action,
   footer,
-  pageSize,
   rows,
   columns,
-  pageSizeOptions,
   checkboxSelection,
-  disableRowSelectionOnClick,
   disableColumnSelector,
+  isloading,
+  pagelength,
+  page,
+  handleChangePage,
+  rowsPerPage,
+  handleChangeRowsPerPage
 }: Props) {
   return (
     <Card
@@ -56,22 +63,28 @@ export default function CustomDataGrid({
           </Box>
           {action}
         </Stack>
-        <div style={{ height: '65vh', width: '100%' }}>
+        <div>
+        <div className='text-md' style={{ height: '60vh', width: '100%' }}>
           <DataGrid
+          loading={isloading}
             rows={rows}
             columns={columns}
-            initialState={{
-              pagination: {
-                paginationModel: {
-                  pageSize: pageSize,
-                },
-              },
-            }}
-            pageSizeOptions={pageSizeOptions}
             checkboxSelection={checkboxSelection}
-            disableRowSelectionOnClick={disableRowSelectionOnClick}
+            disableRowSelectionOnClick={false}
             disableColumnSelector={disableColumnSelector}
+            hideFooterPagination={true}
+            hideFooterSelectedRowCount={true}
           />
+        </div>
+        <TablePagination
+  component="div"
+  count={pagelength}
+  page={page}
+  onPageChange={handleChangePage}
+  rowsPerPage={rowsPerPage}
+  onRowsPerPageChange={handleChangeRowsPerPage}
+  rowsPerPageOptions={[10, 25, 50, 100]}
+/>
         </div>
         {footer}
       </CardContent>

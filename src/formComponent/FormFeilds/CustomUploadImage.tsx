@@ -3,8 +3,8 @@ import Button from '@mui/material/Button';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useState } from 'react';
 import { Grid } from '@mui/material';
-import { handleUploadImage } from '../../utils/uploadImage';
 import { Toaster } from 'react-hot-toast';
+import { handleUploadImage } from '../../Utils/uploadImage';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',

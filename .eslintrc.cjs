@@ -5,6 +5,11 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
+    "prettier",
+    "airbnb/base",
+  ],
+  plugins: [
+    "prettier"
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
@@ -28,9 +33,6 @@ module.exports = {
     "react/prop-types": "off",
     "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/explicit-function-return-type": [
-      "error",
-      { "allowExpressions": true } 
-  ]
+    "@typescript-eslint/explicit-function-return-type": "off"
   },
 }

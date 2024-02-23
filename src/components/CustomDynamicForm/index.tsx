@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import { Card, CardContent, Stack, Typography } from '@mui/material';
-import FormComponent from '../../formComponent';
+import FormComponent from '../../FormComponent';
 
 type Props = {
   title?: string;

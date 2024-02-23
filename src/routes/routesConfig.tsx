@@ -1,33 +1,33 @@
 // routes.ts
-import CustomCircularProgress from '../components/CustomCircularProgress';
+import { LinearProgress } from '@mui/material';
 import React, { Suspense } from 'react';
 import { Navigate } from 'react-router-dom';
 
-const NotFound = React.lazy(() => import('../pages/NotFound'));
-const Dashboard = React.lazy(() => import('../pages/Dashboard'));
-const Layout = React.lazy(() => import('../layout'));
-const UserAuth = React.lazy(() => import('../pages/auth'));
-const Posts = React.lazy(() => import('../pages/Posts/List'));
-const PostAdd = React.lazy(() => import('../pages/Posts/Add'));
-const PostEdit = React.lazy(() => import('../pages/Posts/Edit'));
-const Draft = React.lazy(() => import('../pages/Drafts/List'));
-const DraftAdd = React.lazy(() => import('../pages/Drafts/Add'));
-const DraftEdit = React.lazy(() => import('../pages/Drafts/Edit'));
-const Categories = React.lazy(() => import('../pages/Categories/List'));
-const CategoriesAdd = React.lazy(() => import('../pages/Categories/Add'));
-const CategoriesEdit = React.lazy(() => import('../pages/Categories/Edit'));
-const Tags = React.lazy(() => import('../pages/Tags/List'));
-const TagsAdd = React.lazy(() => import('../pages/Tags/Add'));
-const TagsEdit = React.lazy(() => import('../pages/Tags/Edit'));
-const ImagesList = React.lazy(() => import('../pages/Images/List'));
-const AddImages = React.lazy(() => import('../pages/Images/Add'));
-const UsersList = React.lazy(() => import('../pages/Users/List'));
-const UsersAdd = React.lazy(() => import('../pages/Users/Add'));
-const UsersEdit = React.lazy(() => import('../pages/Users/Edit'));
-const ClientUser = React.lazy(() => import('../pages/ClientUser/List'));
-const Roles = React.lazy(() => import('../pages/Roles/List'));
-const RolesAdd = React.lazy(() => import('../pages/Roles/Add'));
-const RolesEdit = React.lazy(() => import('../pages/Roles/Edit'));
+const NotFound = React.lazy(() => import('../Pages/NotFound'));
+const Dashboard = React.lazy(() => import('../Pages/Dashboard'));
+const Layout = React.lazy(() => import('../Layout'));
+const UserAuth = React.lazy(() => import('../Pages/auth'));
+const Posts = React.lazy(() => import('../Modules/UMS/pages/Posts/List'));
+const PostAdd = React.lazy(() => import('../Modules/UMS/pages/Posts/Add'));
+const PostEdit = React.lazy(() => import('../Modules/UMS/pages/Posts/Edit'));
+const Draft = React.lazy(() => import('../Modules/UMS/pages/Drafts/List'));
+const DraftAdd = React.lazy(() => import('../Modules/UMS/pages/Drafts/Add'));
+const DraftEdit = React.lazy(() => import('../Modules/UMS/pages/Drafts/Edit'));
+const Categories = React.lazy(() => import('../Modules/UMS/pages/Categories/List'));
+const CategoriesAdd = React.lazy(() => import('../Modules/UMS/pages/Categories/Add'));
+const CategoriesEdit = React.lazy(() => import('../Modules/UMS/pages/Categories/Edit'));
+const Tags = React.lazy(() => import('../Modules/UMS/pages/Tags/List'));
+const TagsAdd = React.lazy(() => import('../Modules/UMS/pages/Tags/Add'));
+const TagsEdit = React.lazy(() => import('../Modules/UMS/pages/Tags/Edit'));
+const ImagesList = React.lazy(() => import('../Modules/UMS/pages/Images/List'));
+const AddImages = React.lazy(() => import('../Modules/UMS/pages/Images/Add'));
+const UsersList = React.lazy(() => import('../Modules/CMS/pages/Users/List'));
+const UsersAdd = React.lazy(() => import('../Modules/CMS/pages/Users/Add'));
+const UsersEdit = React.lazy(() => import('../Modules/CMS/pages/Users/Edit'));
+const ClientUser = React.lazy(() => import('../Modules/CMS/pages/ClientUser/List'));
+const Roles = React.lazy(() => import('../Modules/CMS/pages/Roles/List'));
+const RolesAdd = React.lazy(() => import('../Modules/CMS/pages/Roles/Add'));
+const RolesEdit = React.lazy(() => import('../Modules/CMS/pages/Roles/Edit'));
 
 interface RouteConfig {
   path?: any;
@@ -40,7 +40,7 @@ const routes: RouteConfig[] = [
   {
     // parent route component
     element: (
-      <Suspense fallback={<CustomCircularProgress color='inherit' />}>
+      <Suspense fallback={<LinearProgress />}>
         <Layout type='mini' />
       </Suspense>
     ),
@@ -51,7 +51,7 @@ const routes: RouteConfig[] = [
   {
     // parent route component
     element: (
-      <Suspense fallback={<CustomCircularProgress color='inherit' />}>
+      <Suspense fallback={<LinearProgress />}>
         <Layout type='main' />
       </Suspense>
     ),
@@ -85,7 +85,7 @@ const routes: RouteConfig[] = [
   {
     path: '/404',
     element: (
-      <Suspense fallback={<CustomCircularProgress color='inherit' />}>
+      <Suspense fallback={<LinearProgress color='inherit' />}>
         <NotFound />
       </Suspense>
     ),

@@ -32,16 +32,13 @@ module.exports = {
         gelasio: ["'Gelasio'", "serif"]
       },
       fontSize: {
-        // Define custom font sizes for headings, paragraphs, etc.
-        'xs': '.8rem',
-        'sm': '.8.5rem',
-        'base': '.9.5rem',
-        'lg': '1rem',
-        'xl': '1.25rem',
-        '2xl': '1.5rem',
-        '3xl': '1.875rem',
-        '4xl': '2.25rem',
-        '5xl': '3rem',
+        sm: "12px",
+        base: "14px",
+        xl: "16px",
+        "2xl": "20px",
+        "3xl": "28px",
+        "4xl": "38px",
+        "5xl": "50px",
       },
       fontWeight: {
         // Define custom font weights
