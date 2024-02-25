@@ -3,7 +3,6 @@ import { TagsApi } from '../../../../cms/apis/TagsApi';
 import tagsListColumns from '../../../../cms/data/list/tagsListColumns';
 
 const Tags = () => {
-
   return (
     <CustomList
       addLink={'/tags/add'}

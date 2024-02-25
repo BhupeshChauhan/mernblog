@@ -3,7 +3,6 @@ import CustomList from '../../../../../components/CustomPageLayout/CustomList';
 import UserListColumns from '../../../../ums/data/list/userListColumns';
 
 const UsersList = () => {
-
   return (
     <CustomList
     addLink={'/users/add'}
