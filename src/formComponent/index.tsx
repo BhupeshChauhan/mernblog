@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import CustomTextField from './FormFeilds/CustomTextField';
+import CustomTextField from './formFeilds/CustomTextField';
 import { useFormik } from 'formik';
 import { Button, Card, Grid, Input, Typography } from '@mui/material';
-import CustomSelect from './FormFeilds/CustomSelect';
-import CustomImageSelect from './FormFeilds/CustomImageSelect';
-import CustomCheckboxGroup from './FormFeilds/CustomCheckboxGroup';
+import CustomSelect from './formFeilds/CustomSelect';
+import CustomImageSelect from './formFeilds/CustomImageSelect';
+import CustomCheckboxGroup from './formFeilds/CustomCheckboxGroup';
 
 interface IFormComponent {
   formArray?: any;

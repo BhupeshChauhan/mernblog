@@ -5,7 +5,7 @@ import EditorSection from './sections/EditorSection';
 import { useEditorContext } from '../../context/CreateEditorContext';
 import PublishSection from './sections/PublishSection';
 import { Toaster, toast } from 'react-hot-toast';
-import { PostAPI } from '../../apis/PostApi';
+import { PostAPI } from '../../apis/postApi';
 import CustomCircularProgress from '../../../../components/CustomCircularProgress';
 
 const CustomEditor = ({ isEdit = false, draft = false }) => {

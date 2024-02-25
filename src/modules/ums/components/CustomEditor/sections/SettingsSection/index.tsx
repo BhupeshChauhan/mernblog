@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import CustomImageSelect from '../../../../../../formComponent/FormFeilds/CustomImageSelect';
+import CustomImageSelect from '../../../../../../formComponent/formFeilds/CustomImageSelect';
 import defaultbanner from '../../../../../../assets/imgs/blogbanner.png';
 import {
   Accordion,
@@ -9,10 +9,10 @@ import {
   Typography,
 } from '@mui/material';
 import { GridExpandMoreIcon } from '@mui/x-data-grid';
-import CustomSelect from '../../../../../../formComponent/FormFeilds/CustomSelect';
+import CustomSelect from '../../../../../../formComponent/formFeilds/CustomSelect';
 import { useEditorContext } from '../../../../context/CreateEditorContext';
-import { CategoriesApi } from '../../../../apis/CategoriesApi';
-import { TagsApi } from '../../../../apis/TagsApi';
+import { CategoriesApi } from '../../../../apis/categoriesApi';
+import { TagsApi } from '../../../../apis/tagsApi';
 import { useGlobalContext } from '../../../../../../context/GlobalContext';
 import { handleUploadImage } from '../../../../../../utils/uploadImage';
 

@@ -2,7 +2,7 @@ import React from 'react'
 import  { useEffect, useState } from 'react';
 import { Button, ImageList, ImageListItem } from '@mui/material';
 import DashboardCard from '../../../../../common/DashboardCard';
-import { UploadImgApi } from '../../../../ums/apis/UploadImgApi';
+import { UploadImgApi } from '../../../../ums/apis/uploadImgApi';
 import { Link } from 'react-router-dom';
 import CustomCircularProgress from '../../../../../components/CustomCircularProgress';
 

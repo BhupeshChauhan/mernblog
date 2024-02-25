@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import DashboardCard from '../../../../../common/DashboardCard';
-import CustomUploadImage from '../../../../../formComponent/FormFeilds/CustomUploadImage';
+import CustomUploadImage from '../../../../../formComponent/formFeilds/CustomUploadImage';
 
 const AddImages = () => {
   return (
