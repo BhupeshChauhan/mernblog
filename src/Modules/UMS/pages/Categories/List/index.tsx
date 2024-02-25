@@ -1,6 +1,6 @@
 import CustomList from '../../../../../components/CustomPageLayout/CustomList';
-import { CategoriesApi } from '../../../../CMS/apis/CategoriesApi';
-import CategoriesListColumns from '../../../../CMS/data/list/categoriesListColumns';
+import { CategoriesApi } from '../../../../cms/apis/CategoriesApi';
+import CategoriesListColumns from '../../../../cms/data/list/categoriesListColumns';
 
 const Categories = () => {
   

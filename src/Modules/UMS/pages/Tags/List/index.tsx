@@ -1,6 +1,6 @@
 import CustomList from '../../../../../components/CustomPageLayout/CustomList';
-import { TagsApi } from '../../../../CMS/apis/TagsApi';
-import tagsListColumns from '../../../../CMS/data/list/tagsListColumns';
+import { TagsApi } from '../../../../cms/apis/TagsApi';
+import tagsListColumns from '../../../../cms/data/list/tagsListColumns';
 
 const Tags = () => {
 

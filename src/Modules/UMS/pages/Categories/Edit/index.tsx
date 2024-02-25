@@ -3,8 +3,8 @@ import { Button } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import CustomDynamicForm from '../../../../../components/CustomDynamicForm';
 import CustomCircularProgress from '../../../../../components/CustomCircularProgress';
-import categoriesFormData from '../../../../CMS/data/form/categoriesFormData';
-import { CategoriesApi } from '../../../../CMS/apis/CategoriesApi';
+import categoriesFormData from '../../../../cms/data/form/categoriesFormData';
+import { CategoriesApi } from '../../../../cms/apis/CategoriesApi';
 
 const CategoriesEdit = () => {
   const [isLoading, setisLoading] = useState(false);

@@ -1,6 +1,6 @@
-import { RolesApi } from '../../../../UMS/apis/RolesApi';
+import { RolesApi } from '../../../../ums/apis/RolesApi';
 import CustomList from '../../../../../components/CustomPageLayout/CustomList';
-import RolesListColumns from '../../../../UMS/data/list/rolesListColumns';
+import RolesListColumns from '../../../../ums/data/list/rolesListColumns';
 
 const UsersList = () => {
 

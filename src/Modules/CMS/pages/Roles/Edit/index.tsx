@@ -3,8 +3,8 @@ import { Button } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import CustomDynamicForm from '../../../../../components/CustomDynamicForm';
 import CustomCircularProgress from '../../../../../components/CustomCircularProgress';
-import rolesFormData from '../../../../UMS/data/form/rolesFormData';
-import { RolesApi } from '../../../../UMS/apis/RolesApi';
+import rolesFormData from '../../../../ums/data/form/rolesFormData';
+import { RolesApi } from '../../../../ums/apis/RolesApi';
 
 const RolesEdit = () => {
   const [isLoading, setIsLoading] = useState(false);

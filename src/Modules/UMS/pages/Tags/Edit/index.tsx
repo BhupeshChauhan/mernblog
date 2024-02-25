@@ -3,8 +3,8 @@ import { Button } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import CustomDynamicForm from '../../../../../components/CustomDynamicForm';
 import CustomCircularProgress from '../../../../../components/CustomCircularProgress';
-import tagsFormData from '../../../../CMS/data/form/tagsFormData';
-import { TagsApi } from '../../../../CMS/apis/TagsApi';
+import tagsFormData from '../../../../cms/data/form/tagsFormData';
+import { TagsApi } from '../../../../cms/apis/TagsApi';
 
 const TagsEdit = () => {
   const [isLoading, setisLoading] = useState(false);

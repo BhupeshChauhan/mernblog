@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import CustomTextField from '../../formComponent/FormFeilds/CustomTextField';
 import { useGlobalContext } from '../../context/GlobalContext';
 import { useNavigate } from 'react-router-dom';
-import { UsersApi } from '../../modules/UMS/apis/UsersApi';
+import { UsersApi } from '../../modules/ums/apis/UsersApi';
 
 interface loginType {
   type?: string;
