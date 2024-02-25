@@ -1,6 +1,6 @@
 import CustomList from '../../../../../components/CustomPageLayout/CustomList';
-import { PostAPI } from '../../../../cms/apis/PostApi';
-import DraftListColumns from '../../../../cms/data/list/draftListColumns';
+import { PostAPI } from '../../../apis/postApi';
+import DraftListColumns from '../../../data/list/draftListColumns';
 
 const Draft = () => {
 

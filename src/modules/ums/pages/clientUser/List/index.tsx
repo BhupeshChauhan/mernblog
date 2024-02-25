@@ -1,6 +1,6 @@
-import { UsersApi } from '../../../../cms/apis/UsersApi';
 import CustomList from '../../../../../components/CustomPageLayout/CustomList';
-import UserClientListColumns from '../../../../cms/data/list/userClientListColumns';
+import { UsersApi } from '../../../apis/UsersApi';
+import UserClientListColumns from '../../../data/list/userClientListColumns';
 
 const ClientUser = () => {
 

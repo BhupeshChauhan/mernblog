@@ -1,6 +1,6 @@
 import CustomList from '../../../../../components/CustomPageLayout/CustomList';
-import { PostAPI } from '../../../../cms/apis/PostApi';
-import PostListColumns from '../../../../cms/data/list/postListColumns';
+import { PostAPI } from '../../../apis/postApi';
+import PostListColumns from '../../../data/list/postListColumns';
 
 const Posts = () => {
   return (
