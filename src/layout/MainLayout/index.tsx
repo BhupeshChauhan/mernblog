@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { styled, Container, ThemeProvider } from '@mui/material';
-import { baselightTheme } from '../../Theme/DefaultColors';
-import AnimationWapper from '../../Common/PageAnimation';
+import { baselightTheme } from '../../theme/DefaultColors';
+import AnimationWapper from '../../common/PageAnimation';
 import { useLocation } from 'react-router-dom';
 import Sidebar from './sidebar/Sidebar';
 import Header from './header/Header';

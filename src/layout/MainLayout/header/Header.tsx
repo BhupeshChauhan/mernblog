@@ -13,7 +13,7 @@ import { MdMenuOpen } from 'react-icons/md';
 
 // components
 import Profile from './Profile';
-import { useGlobalContext } from '../../../Context/GlobalContext';
+import { useGlobalContext } from '../../../context/GlobalContext';
 import { useLocation } from 'react-router-dom';
 
 interface ItemType {

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import EditorJS from '@editorjs/editorjs';
 import { useEditorContext } from '../../../../context/CreateEditorContext';
-import AnimationWapper from '../../../../../../Common/PageAnimation';
-import EditorTools from '../../../../../../Utils/editor.tools';
+import AnimationWapper from '../../../../../../common/PageAnimation';
+import EditorTools from '../../../../../../utils/editor.tools';
 
 const EditorSection = ({ isEdit = false }) => {
   const {

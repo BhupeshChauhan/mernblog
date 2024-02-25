@@ -1,5 +1,5 @@
 import { UsersApi } from '../../../../UMS/apis/UsersApi';
-import CustomList from '../../../../../Components/CustomPageLayout/CustomList';
+import CustomList from '../../../../../components/CustomPageLayout/CustomList';
 import UserClientListColumns from '../../../../UMS/data/list/userClientListColumns';
 
 const ClientUser = () => {

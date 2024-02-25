@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import CustomDynamicForm from '../../../../../Components/CustomDynamicForm';
-import CustomCircularProgress from '../../../../../Components/CustomCircularProgress';
+import CustomDynamicForm from '../../../../../components/CustomDynamicForm';
+import CustomCircularProgress from '../../../../../components/CustomCircularProgress';
 import usersFormData from '../../../../UMS/data/form/usersFormData';
 import { UsersApi } from '../../../../UMS/apis/UsersApi';
 import { RolesApi } from '../../../../UMS/apis/RolesApi';

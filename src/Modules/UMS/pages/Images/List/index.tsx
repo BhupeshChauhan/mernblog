@@ -1,9 +1,9 @@
 import  { useEffect, useState } from 'react';
 import { Button, ImageList, ImageListItem } from '@mui/material';
-import DashboardCard from '../../../../../Common/DashboardCard';
+import DashboardCard from '../../../../../common/DashboardCard';
 import { UploadImgApi } from '../../../../CMS/apis/UploadImgApi';
 import { Link } from 'react-router-dom';
-import CustomCircularProgress from '../../../../../Components/CustomCircularProgress';
+import CustomCircularProgress from '../../../../../components/CustomCircularProgress';
 
 const ImagesList = () => {
   const [isLoading, setisLoading] = useState(false);

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import CustomImageSelect from '../../../../../../FormComponent/FormFeilds/CustomImageSelect';
+import CustomImageSelect from '../../../../../../formComponent/FormFeilds/CustomImageSelect';
 import defaultbanner from '../../../../../../assets/imgs/blogbanner.png';
 import {
   Accordion,
@@ -9,12 +9,12 @@ import {
   Typography,
 } from '@mui/material';
 import { GridExpandMoreIcon } from '@mui/x-data-grid';
-import CustomSelect from '../../../../../../FormComponent/FormFeilds/CustomSelect';
+import CustomSelect from '../../../../../../formComponent/FormFeilds/CustomSelect';
 import { useEditorContext } from '../../../../context/CreateEditorContext';
 import { CategoriesApi } from '../../../../apis/CategoriesApi';
 import { TagsApi } from '../../../../apis/TagsApi';
-import { useGlobalContext } from '../../../../../../Context/GlobalContext';
-import { handleUploadImage } from '../../../../../../Utils/uploadImage';
+import { useGlobalContext } from '../../../../../../context/GlobalContext';
+import { handleUploadImage } from '../../../../../../utils/uploadImage';
 
 const SettingsSection = () => {
   const {

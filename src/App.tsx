@@ -1,7 +1,7 @@
 // App.tsx
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import routes from './routes/routesConfig';
-import { GlobalContextProvider } from './Context/GlobalContext';
+import { GlobalContextProvider } from './context/GlobalContext';
 import './index.css';
 
 const App = () => {

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Button } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
-import CustomDynamicForm from '../../../../../Components/CustomDynamicForm';
-import CustomCircularProgress from '../../../../../Components/CustomCircularProgress';
+import CustomDynamicForm from '../../../../../components/CustomDynamicForm';
+import CustomCircularProgress from '../../../../../components/CustomCircularProgress';
 import categoriesFormData from '../../../../CMS/data/form/categoriesFormData';
 import { CategoriesApi } from '../../../../CMS/apis/CategoriesApi';
 

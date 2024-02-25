@@ -1,4 +1,4 @@
-import { api } from '../../../Utils/apiConfigs/axiosConfigs';
+import { api } from '../../../utils/apiConfigs/axiosConfigs';
 
 export const UploadImgApi = {
   getImageUrl: async function () {

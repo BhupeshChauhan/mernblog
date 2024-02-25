@@ -6,7 +6,7 @@ import { useEditorContext } from '../../context/CreateEditorContext';
 import PublishSection from './sections/PublishSection';
 import { Toaster, toast } from 'react-hot-toast';
 import { PostAPI } from '../../apis/PostApi';
-import CustomCircularProgress from '../../../../Components/CustomCircularProgress';
+import CustomCircularProgress from '../../../../components/CustomCircularProgress';
 
 const CustomEditor = ({ isEdit = false, draft = false }) => {
   const [isLoading, setisLoading] = useState(false);

@@ -2,10 +2,10 @@ import { Button } from '@mui/material';
 import CustomDataGrid from '../../CustomDataGrid';
 import CustomModal from '../../CustomModal';
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from '../../../Context/GlobalContext';
+import { useGlobalContext } from '../../../context/GlobalContext';
 import { useEffect } from 'react';
-import useListView from '../../../Hooks/useListView';
-import checkModulePermission, { moduleAction, moduleName } from '../../../Utils/checkModulePermission';
+import useListView from '../../../hooks/useListView';
+import checkModulePermission, { moduleAction, moduleName } from '../../../utils/checkModulePermission';
 
 const CustomList = ({
   addLink,

@@ -1,4 +1,4 @@
-import CustomList from '../../../../../Components/CustomPageLayout/CustomList';
+import CustomList from '../../../../../components/CustomPageLayout/CustomList';
 import { CategoriesApi } from '../../../../CMS/apis/CategoriesApi';
 import CategoriesListColumns from '../../../../CMS/data/list/categoriesListColumns';
 

@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 
 import { MdOutlineContactMail, MdFace6 } from 'react-icons/md';
-import { useGlobalContext } from '../../../Context/GlobalContext';
+import { useGlobalContext } from '../../../context/GlobalContext';
 
 import usericon from '../../../assets/imgs/usericon.png'
 

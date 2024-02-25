@@ -1,6 +1,6 @@
 import { CreateEditorContextProvider } from '../../../../CMS/context/CreateEditorContext';
 import CustomEditor from '../../../../CMS/components/CustomEditor';
-import DashboardCard from '../../../../../Common/DashboardCard';
+import DashboardCard from '../../../../../common/DashboardCard';
 
 const PostEdit = () => {
   return (

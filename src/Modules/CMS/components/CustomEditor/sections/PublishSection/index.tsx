@@ -1,5 +1,5 @@
 import { Toaster } from 'react-hot-toast';
-import AnimationWapper from '../../../../../../Common/PageAnimation';
+import AnimationWapper from '../../../../../../common/PageAnimation';
 import SettingsSection from '../SettingsSection';
 import { Grid, Typography } from '@mui/material';
 import PreivewSection from '../PreivewSection';

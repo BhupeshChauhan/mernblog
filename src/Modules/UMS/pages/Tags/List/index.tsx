@@ -1,4 +1,4 @@
-import CustomList from '../../../../../Components/CustomPageLayout/CustomList';
+import CustomList from '../../../../../components/CustomPageLayout/CustomList';
 import { TagsApi } from '../../../../CMS/apis/TagsApi';
 import tagsListColumns from '../../../../CMS/data/list/tagsListColumns';
 

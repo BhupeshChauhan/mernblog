@@ -1,4 +1,4 @@
-import DashboardCard from "../../Common/DashboardCard";
+import DashboardCard from "../../common/DashboardCard";
 
 const Dashboard = () => {
   return <DashboardCard title={"comming soon"}>

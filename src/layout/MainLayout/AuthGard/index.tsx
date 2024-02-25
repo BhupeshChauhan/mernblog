@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import NotAuthorised from '../../NotAuthorised';
-import { useGlobalContext } from '../../../Context/GlobalContext';
+import { useGlobalContext } from '../../../context/GlobalContext';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const AuthGard = ({ children }: any) => {

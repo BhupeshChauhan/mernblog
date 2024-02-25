@@ -5,9 +5,9 @@ import checkModulePermission, {
     checkPermissionDelete,
     moduleAction,
     moduleName,
-} from '../../../../Utils/checkModulePermission';
-import { useGlobalContext } from '../../../../Context/GlobalContext';
-import CustomMenu from '../../../../Components/CustomMenu';
+} from '../../../../utils/checkModulePermission';
+import { useGlobalContext } from '../../../../context/GlobalContext';
+import CustomMenu from '../../../../components/CustomMenu';
 import { format, parseISO } from 'date-fns';
 
 const UserListColumns = (setActivateMoadal: any, setSelectedUser: any, setDeleteMoadal: any) => {

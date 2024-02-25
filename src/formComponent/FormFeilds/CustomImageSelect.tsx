@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { Button, Grid, ImageList, ImageListItem } from '@mui/material';
-import CustomDialog from '../../Components/CustomDialog';
+import CustomDialog from '../../components/CustomDialog';
 import { useState } from 'react';
-import { UploadImgApi } from '../../Modules/CMS/apis/UploadImgApi';
+import { UploadImgApi } from '../../modules/CMS/apis/UploadImgApi';
 import CustomUploadImage from './CustomUploadImage';
 
 type Props = {

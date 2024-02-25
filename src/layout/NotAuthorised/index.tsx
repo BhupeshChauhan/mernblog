@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import FullLayout from '../MainLayout';
-import DashboardCard from '../../Common/DashboardCard';
+import DashboardCard from '../../common/DashboardCard';
 
 const NotAuthorised = () => {
   return (

@@ -1,4 +1,4 @@
-import CustomList from '../../../../../Components/CustomPageLayout/CustomList';
+import CustomList from '../../../../../components/CustomPageLayout/CustomList';
 import { PostAPI } from '../../../../CMS/apis/PostApi';
 import DraftListColumns from '../../../../CMS/data/list/draftListColumns';
 
