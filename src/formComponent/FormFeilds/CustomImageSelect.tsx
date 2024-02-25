@@ -97,8 +97,7 @@ const CustomImageSelect = ({ value, handleChange, fullWidth, name, placeholder }
           {images?.map((item: any) => (
             <ImageListItem key={item.imageUrl}>
               <img
-                srcSet={`${item.imageUrl}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                src={`${item.imageUrl}?w=164&h=164&fit=crop&auto=format`}
+                src={`${item.imageUrl}`}
                 alt={item.filename}
                 loading='lazy'
                 style={

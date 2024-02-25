@@ -1,7 +1,8 @@
+import React from 'react'
 import  { useEffect, useState } from 'react';
 import { Button, ImageList, ImageListItem } from '@mui/material';
 import DashboardCard from '../../../../../common/DashboardCard';
-import { UploadImgApi } from '../../../../cms/apis/UploadImgApi';
+import { UploadImgApi } from '../../../../ums/apis/UploadImgApi';
 import { Link } from 'react-router-dom';
 import CustomCircularProgress from '../../../../../components/CustomCircularProgress';
 
@@ -33,8 +34,7 @@ const ImagesList = () => {
           {images.map((item: any) => (
             <ImageListItem key={item.imageUrl}>
               <img
-                srcSet={`${item.imageUrl}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                src={`${item.imageUrl}?w=164&h=164&fit=crop&auto=format`}
+                src={`${item.imageUrl}`}
                 alt={item.title}
                 loading='lazy'
                 style={{ height: '100%', width: '100%' }}
